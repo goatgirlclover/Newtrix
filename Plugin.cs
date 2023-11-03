@@ -9,7 +9,7 @@ namespace trickyclown
     [BepInPlugin("info.mariobluegloves.trickyclown", "New Trix", "1.0.0")]
     [BepInProcess("Bomb Rush Cyberfunk.exe")]
 
-    public class Plugin : BaseUnityPlugin
+    public class VertAbilityPatches : BaseUnityPlugin
     {
         private void Awake()
         {
@@ -17,6 +17,7 @@ namespace trickyclown
             var harmony = new Harmony("info.mariobluegloves.trickyclownp");
             harmony.PatchAll(typeof(GTAPatchTC));
             harmony.PatchAll(typeof(ATAPatchTC));
+            harmony.PatchAll();
             Logger.LogInfo($"Trix R 4 Kidz");
         }
     }

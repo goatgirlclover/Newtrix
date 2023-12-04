@@ -7,7 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace trickyclown
 {
-    [BepInPlugin("info.mariobluegloves.trickyclown", "New Trix", "1.0.0")]
+    [BepInPlugin("info.mariobluegloves.trickyclown", "New Trix", "1.1.4")]
     [BepInProcess("Bomb Rush Cyberfunk.exe")]
     public class ATAPatchTC
     {
@@ -16,7 +16,8 @@ namespace trickyclown
         private static bool Init_Prefix(AirTrickAbility __instance)
         {
             __instance.skateboardTrickNames = new string[] { "Backside 360 Varial", "Backflip Indy", "Method Grab", "1080", "McTwist", "1080" };
-            __instance.inlineTrickNames = new string[] { "Cork 720", "Method Grab", "Abstract 360", "1080 California Roll", "Corkscrew", "1080 California Roll" };
+            __instance.inlineTrickNames = new string[] { "Cork 720", "Method Grab", "Abstract 360", "1080 California Roll", "Flying Fish", "Corkscrew" };
+            __instance.bmxTrickNames = new string[] { "Tailwhip 360", "No Hand Backflip", "Superman Seat Grab Indian", "720 Double Backflip", "Barrel 90", "360 Backflip" };
             __instance.trickingTrickNames = new string[] { "Bullet Spin", "Backflip Grab", "Cheat 720", "Shuriken", "Corkscrew", "Shuriken" };
             return true;
         }
@@ -42,24 +43,32 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 1)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash("jumpTrick1"), true, false, 0f);
+                    __instance.p.PlayAnim(Animator.StringToHash("airTrick3"), true, false, 0f);
                 }
                 if (__instance.curTrick == 2)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash("jumpTrick2"), true, false, 0f);
+                    __instance.p.PlayAnim(Animator.StringToHash("jumpTrick1"), true, false, 0f);
                 }
+                //if (__instance.curTrick == 2)
+                //{
+                //    __instance.p.PlayAnim(Animator.StringToHash("jumpTrick2"), true, false, 0f);
+                //}
             }
-            //else if (__instance.p.moveStyle == MoveStyle.BMX)
-            //{
-            //    if (__instance.curTrick == 1)
-            //    {
-            //        __instance.p.PlayAnim(Animator.StringToHash("jumpTrick1"), true, false, 0f);
-            //    }
-            //    if (__instance.curTrick == 2)
-            //    {
-            //        __instance.p.PlayAnim(Animator.StringToHash("airTrick4BMX"), true, false, 0f);
-            //    }
-            //}
+            if (__instance.p.moveStyle == MoveStyle.BMX)
+            {
+                if (__instance.curTrick == 1)
+                {
+                    __instance.p.PlayAnim(Animator.StringToHash("hitBounce"), true, false, 0f);
+                }
+                if (__instance.curTrick == 2)
+                {
+                    __instance.p.PlayAnim(Animator.StringToHash("jumpTrick1"), true, false, 0f);
+                }
+                //    if (__instance.curTrick == 2)
+                //    {
+                //        __instance.p.PlayAnim(Animator.StringToHash("airTrick4BMX"), true, false, 0f);
+                //    }
+            }
             else if (__instance.p.moveStyle == MoveStyle.ON_FOOT)
             {
                 if (__instance.curTrick == 1)

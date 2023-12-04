@@ -34,24 +34,24 @@ namespace newtrickx
                 {
                     if (airTrickAbility.curTrick == 1)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash("jumpTrick1"), true, false, 0f);
+                        __instance.p.PlayAnim(Animator.StringToHash("airTrick3"), true, false, 0f);
                     }
                     if (airTrickAbility.curTrick == 2)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash("jumpTrick2"), true, false, 0f);
+                        __instance.p.PlayAnim(Animator.StringToHash("jumpTrick1"), true, false, 0f);
                     }
                 }
-                //else if (__instance.p.moveStyle == MoveStyle.BMX)
-                //{
-                //    if (airTrickAbility.curTrick == 1)
-                //    {
-                //        __instance.p.PlayAnim(Animator.StringToHash("jumpTrick1"), true, false, 0f);
-                //    }
-                //    if (airTrickAbility.curTrick == 2)
-                //    {
-                //        __instance.p.PlayAnim(Animator.StringToHash("airTrick4BMX"), true, false, 0f);
-                //    }
-                //}
+                if (__instance.p.moveStyle == MoveStyle.BMX)
+                {
+                    if (airTrickAbility.curTrick == 1)
+                    {
+                        __instance.p.PlayAnim(Animator.StringToHash("hitBounce"), true, false, 0f);
+                    }
+                    if (airTrickAbility.curTrick == 2)
+                    {
+                        __instance.p.PlayAnim(Animator.StringToHash("jumpTrick1"), true, false, 0f);
+                    }
+                }
                 else if (__instance.p.moveStyle == MoveStyle.ON_FOOT)
                 {
                     if (airTrickAbility.curTrick == 1)

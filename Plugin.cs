@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace trickyclown
 {
-    [BepInPlugin("info.mariobluegloves.trickyclown", "New Trix", "1.0.0")]
+    [BepInPlugin("info.mariobluegloves.trickyclown", "New Trix", "1.1.4")]
     [BepInProcess("Bomb Rush Cyberfunk.exe")]
 
     public class VertAbilityPatches : BaseUnityPlugin

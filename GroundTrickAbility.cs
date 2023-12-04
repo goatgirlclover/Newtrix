@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace trickyclown
 {
-    [BepInPlugin("info.mariobluegloves.trickyclown", "New Trix", "1.0.0")]
+    [BepInPlugin("info.mariobluegloves.trickyclown", "New Trix", "1.1.4")]
     [BepInProcess("Bomb Rush Cyberfunk.exe")]
     public class GTAPatchTC
     {
@@ -15,7 +15,7 @@ namespace trickyclown
         private static bool Init_Prefix(GroundTrickAbility __instance)
         {
             __instance.skateboardTrickNames = new string[] { "Kickflip", "Backside 360 Powerspin", "360 Flip", "Handstand Flip", "Switch FS 180 Front Foot Impossible", "Handstand Flip" };
-            __instance.inlineSkatesTrickNames = new string[] { "Unity Spin Cess Slide", "Duckwalk Fakie", "Back Closed Tree", "Bio", "One Foot", "Bio" };
+            __instance.inlineSkatesTrickNames = new string[] { "Unity Spin Cess Slide", "Duckwalk Fakie", "Back Closed Tree", "Bio", "Backslide Cess", "Bio" };
             return true;
         }
 

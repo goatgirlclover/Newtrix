@@ -1,13 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net46</TargetFramework>
+    <TargetFramework>net471</TargetFramework>
     <AssemblyName>NewTrix</AssemblyName>
     <Description>New Tricks for Bomb Rush Cyberfunk</Description>
-    <Version>1.0.2</Version>
+    <Version>1.4.0</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SpecialAirAbility.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="UnityEngine.Modules" Version="2021.3.27" IncludeAssets="compile" />
@@ -29,6 +33,18 @@
 		</Reference>
 		<Reference Include="Assembly-CSharp-firstpass">
 			<HintPath>lib\Assembly-CSharp-firstpass.dll</HintPath>
+		</Reference>
+		<Reference Include="CarJack">
+			<HintPath>lib\CarJack.Plugin.dll</HintPath>
+		</Reference>
+		<Reference Include="CarJack.Common">
+			<HintPath>lib\CarJack.Common_publicized.dll</HintPath>
+		</Reference>
+		<Reference Include="CarJack.SlopCrew">
+			<HintPath>lib\CarJack.SlopCrew.dll</HintPath>
+		</Reference>
+		<Reference Include="CarJack.BombRushCamera">
+			<HintPath>lib\CarJack.BombRushCamera.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 </Project>

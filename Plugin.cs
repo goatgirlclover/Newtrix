@@ -8,10 +8,12 @@ using newtrickx;
 using CarJack.Common;
 using UnityEngine.SceneManagement;
 using BepInEx.Configuration;
+using BepInEx.Bootstrap;
 
 namespace trickyclown
 {
     [BepInPlugin("info.mariobluegloves.trickyclown", "New Trix", "1.4.0")]
+    [BepInDependency("com.Dragsun.BunchOfEmotes", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInProcess("Bomb Rush Cyberfunk.exe")]
     public class VertAbilityPatches : BaseUnityPlugin
     {
@@ -32,6 +34,10 @@ namespace trickyclown
             harmony.PatchAll();
             Logger.LogInfo($"Trix R 4 Kidz");
             SceneManager.sceneLoaded += OnSceneLoaded;
+            if (Chainloader.PluginInfos.ContainsKey("com.Dragsun.BunchOfEmotes"))
+            {
+                BunchOfEmotesSupport.Initialize();
+            }
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

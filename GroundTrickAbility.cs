@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace trickyclown
 {
-    [BepInPlugin("ConfigTrixGroundTricks", "New Trix Ground", "1.4.0")]
+    [BepInPlugin("ConfigTrixGroundTricks", "New Trix Ground", "1.4.1")]
     [BepInProcess("Bomb Rush Cyberfunk.exe")]
     public class GTAPatchTC : BaseUnityPlugin
     {
@@ -343,7 +343,7 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0 && configValueGround != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround), true, false, 0f);
                 }
                 else if (configValueGround == null)
                 {
@@ -352,7 +352,7 @@ namespace trickyclown
 
                 if (__instance.curTrick == 1 && configValueGround2 != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround2), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround2), true, false, 0f);
                 }
                 else if (configValueGround2 == null)
                 {
@@ -361,7 +361,7 @@ namespace trickyclown
 
                 if (__instance.curTrick == 2 && configValueGround3 != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround3), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround3), true, false, 0f);
                 }
                 else if (configValueGround3 == null)
                 {
@@ -372,7 +372,7 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0 && configValueGround4 != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround4), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround4), true, false, 0f);
                 }
                 else if (configValueGround4 == null)
                 {
@@ -381,7 +381,7 @@ namespace trickyclown
 
                 if (__instance.curTrick == 1 && configValueGround5 != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround5), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround5), true, false, 0f);
                 }
                 else if (configValueGround5 == null)
                 {
@@ -390,7 +390,7 @@ namespace trickyclown
 
                 if (__instance.curTrick == 2 && configValueGround6 != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround6), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround6), true, false, 0f);
                 }
                 else if (configValueGround6 == null)
                 {
@@ -401,7 +401,7 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0 && configValueGround7 != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround7), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround7), true, false, 0f);
                 }
                 else if (configValueGround7 == null)
                 {
@@ -410,7 +410,7 @@ namespace trickyclown
 
                 if (__instance.curTrick == 1 && configValueGround8 != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround8), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround8), true, false, 0f);
                 }
                 else if (configValueGround8 == null)
                 {
@@ -419,7 +419,7 @@ namespace trickyclown
 
                 if (__instance.curTrick == 2 && configValueGround9 != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround9), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround9), true, false, 0f);
                 }
                 else if (configValueGround9 == null)
                 {
@@ -430,7 +430,7 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0 && configValueGround10 != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround10), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround10), true, false, 0f);
                 }
                 else if (configValueGround10 == null)
                 {
@@ -439,7 +439,7 @@ namespace trickyclown
 
                 if (__instance.curTrick == 1 && configValueGround11 != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround11), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround11), true, false, 0f);
                 }
                 else if (configValueGround11 == null)
                 {
@@ -448,7 +448,7 @@ namespace trickyclown
 
                 if (__instance.curTrick == 2 && configValueGround12 != null)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueGround12), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround12), true, false, 0f);
                 }
                 else if (configValueGround12 == null)
                 {
@@ -537,7 +537,7 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0 && configValueGround != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround), true, false, 0f);
                     }
                     else if (configValueGround == null)
                     {
@@ -546,7 +546,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueGround2 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround2), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround2), true, false, 0f);
                     }
                     else if (configValueGround2 == null)
                     {
@@ -555,7 +555,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueGround3 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround3), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround3), true, false, 0f);
                     }
                     else if (configValueGround3 == null)
                     {
@@ -566,7 +566,7 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0 && configValueGround4 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround4), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround4), true, false, 0f);
                     }
                     else if (configValueGround4 == null)
                     {
@@ -575,7 +575,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueGround5 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround5), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround5), true, false, 0f);
                     }
                     else if (configValueGround5 == null)
                     {
@@ -584,7 +584,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueGround6 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround6), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround6), true, false, 0f);
                     }
                     else if (configValueGround6 == null)
                     {
@@ -595,7 +595,7 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0 && configValueGround7 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround7), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround7), true, false, 0f);
                     }
                     else if (configValueGround7 == null)
                     {
@@ -604,7 +604,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueGround8 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround8), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround8), true, false, 0f);
                     }
                     else if (configValueGround8 == null)
                     {
@@ -613,7 +613,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueGround9 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround9), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround9), true, false, 0f);
                     }
                     else if (configValueGround9 == null)
                     {
@@ -624,7 +624,7 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0 && configValueGround10 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround10), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround10), true, false, 0f);
                     }
                     else if (configValueGround10 == null)
                     {
@@ -633,7 +633,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueGround11 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround11), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround11), true, false, 0f);
                     }
                     else if (configValueGround11 == null)
                     {
@@ -642,7 +642,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueGround12 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueGround12), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround12), true, false, 0f);
                     }
                     else if (configValueGround12 == null)
                     {

@@ -44,17 +44,17 @@ namespace newtrickx
                     bool flag2 = airTrickAbility.curTrick == 0;
                     if (flag2)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(skateboardAirBoostTrick0), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirBoostTrick0), true, false, 0f);
                     }
                     bool flag3 = airTrickAbility.curTrick == 1;
                     if (flag3)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(skateboardAirBoostTrick1), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirBoostTrick1), true, false, 0f);
                     }
                     bool flag3b = airTrickAbility.curTrick == 2;
                     if (flag3b)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(skateboardAirBoostTrick2), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirBoostTrick2), true, false, 0f);
                     }
                 }
                 else
@@ -65,17 +65,17 @@ namespace newtrickx
                         bool flag5 = airTrickAbility.curTrick == 0;
                         if (flag5)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(inlineAirBoostTrick0), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirBoostTrick0), true, false, 0f);
                         }
                         bool flag5a = airTrickAbility.curTrick == 1;
                         if (flag5a)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(inlineAirBoostTrick1), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirBoostTrick1), true, false, 0f);
                         }
                         bool flag6 = airTrickAbility.curTrick == 2;
                         if (flag6)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(inlineAirBoostTrick2), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirBoostTrick2), true, false, 0f);
                         }
                     }
                 }
@@ -85,17 +85,17 @@ namespace newtrickx
                     bool flag8 = airTrickAbility.curTrick == 0;
                     if (flag8)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(bmxAirBoostTrick0), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirBoostTrick0), true, false, 0f);
                     }
                     bool flag8a = airTrickAbility.curTrick == 1;
                     if (flag8a)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(bmxAirBoostTrick1), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirBoostTrick1), true, false, 0f);
                     }
                     bool flag9 = airTrickAbility.curTrick == 2;
                     if (flag9)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(bmxAirBoostTrick2), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirBoostTrick2), true, false, 0f);
                     }
                 }
                 else
@@ -106,17 +106,17 @@ namespace newtrickx
                         bool flag11 = airTrickAbility.curTrick == 0;
                         if (flag11)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrick0), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrick0), true, false, 0f);
                         }
                         bool flag12 = airTrickAbility.curTrick == 1;
                         if (flag12)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrick1), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrick1), true, false, 0f);
                         }
                         bool flag13 = airTrickAbility.curTrick == 2;
                         if (flag13)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrick2), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrick2), true, false, 0f);
                         }
                     }
                 }
@@ -183,17 +183,17 @@ namespace newtrickx
                         bool flag6 = airTrickAbility.curTrick == 0;
                         if (flag6)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrick0), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrick0), true, false, 0f);
                         }
                         bool flag6a = airTrickAbility.curTrick == 1;
                         if (flag6a)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrick1), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrick1), true, false, 0f);
                         }
                         bool flag6b = airTrickAbility.curTrick == 2;
                         if (flag6b)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrick2), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrick2), true, false, 0f);
                         }
                     }
                     bool flagB = __instance.p.moveStyle == MoveStyle.BMX;
@@ -202,17 +202,17 @@ namespace newtrickx
                         bool flagB0 = airTrickAbility.curTrick == 0;
                         if (flagB0)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(bmxAirTrick0), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirTrick0), true, false, 0f);
                         }
                         bool flagB1 = airTrickAbility.curTrick == 1;
                         if (flagB1)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(bmxAirTrick1), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirTrick1), true, false, 0f);
                         }
                         bool flagB2 = airTrickAbility.curTrick == 2;
                         if (flagB2)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(bmxAirTrick2), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirTrick2), true, false, 0f);
                         }
                     }
                     bool flag7 = __instance.p.moveStyle == MoveStyle.INLINE;
@@ -221,17 +221,17 @@ namespace newtrickx
                         bool flag8 = airTrickAbility.curTrick == 0;
                         if (flag8)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(inlineAirTrick0), true, false, -1f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirTrick0), true, false, -1f);
                         }
                         bool flag8a = airTrickAbility.curTrick == 1;
                         if (flag8a)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(inlineAirTrick1), true, false, -1f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirTrick1), true, false, -1f);
                         }
                         bool flag8b = airTrickAbility.curTrick == 2;
                         if (flag8b)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(inlineAirTrick2), true, false, -1f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirTrick2), true, false, -1f);
                         }
                     }
                     bool flag9 = __instance.p.moveStyle == MoveStyle.SKATEBOARD;
@@ -252,48 +252,48 @@ namespace newtrickx
                                 {
                                     if (moveAxisY <= -0.25f)
                                     {
-                                        __instance.p.PlayAnim(Animator.StringToHash(skateboardAirTrick0), true, false, -1f);
+                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
                                     }
                                     else if (moveAxisY >= 0.25f)
                                     {
-                                        __instance.p.PlayAnim(Animator.StringToHash(skateboardAirTrick0), true, false, -1f);
+                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
                                     }
                                     else
                                     {
-                                        __instance.p.PlayAnim(Animator.StringToHash("groundTrick0"), true, false, -1f);
+                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundTrick0"), true, false, -1f);
                                     }
                                 }
                                 else if (moveAxisX >= 0.25f)
                                 {
                                     if (moveAxisY <= -0.25f)
                                     {
-                                        __instance.p.PlayAnim(Animator.StringToHash(skateboardAirTrick0), true, false, -1f);
+                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
                                     }
                                     else if (moveAxisY >= 0.25f)
                                     {
-                                        __instance.p.PlayAnim(Animator.StringToHash(skateboardAirTrick0), true, false, -1f);
+                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
                                     }
                                     else
                                     {
-                                        __instance.p.PlayAnim(Animator.StringToHash("groundTrick2"), true, false, -1f);
+                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundTrick2"), true, false, -1f);
                                     }
                                 }
                                 else if (moveAxisY <= -0.25f)
                                 {
-                                    __instance.p.PlayAnim(Animator.StringToHash("grindTrick0"), true, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("grindTrick0"), true, false, -1f);
                                 }
                                 else if (moveAxisY >= 0.25f)
                                 {
-                                    __instance.p.PlayAnim(Animator.StringToHash("groundTrick3"), true, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundTrick3"), true, false, -1f);
                                 }
                                 else
                                 {
-                                    __instance.p.PlayAnim(Animator.StringToHash(skateboardAirTrick0), true, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
                                 }
                             }
                             else
                             {
-                                __instance.p.PlayAnim(Animator.StringToHash(skateboardAirTrick0), true, false, -1f);
+                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
                             }
 
                         }
@@ -303,16 +303,16 @@ namespace newtrickx
                             {
                                 if (__instance.p.slideButtonHeld)
                                 {
-                                    __instance.p.PlayAnim(Animator.StringToHash("groundBoostTrick0"), false, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundBoostTrick0"), false, false, -1f);
                                 }
                                 else
                                 {
-                                    __instance.p.PlayAnim(Animator.StringToHash(skateboardAirTrick1), false, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick1), false, false, -1f);
                                 }
                             }
                             else
                             {
-                                __instance.p.PlayAnim(Animator.StringToHash(skateboardAirTrick1), false, false, -1f);
+                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick1), false, false, -1f);
                             }
                         }
                         if (flagf)
@@ -324,25 +324,25 @@ namespace newtrickx
                                     if (__instance.p.moveAxisY <= -0.25f)
                                     {
                                         Console.WriteLine("EVEN FLOOOOOW");
-                                        __instance.p.PlayAnim(Animator.StringToHash("airBoostTrick2"), false, false, -1f);
+                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("airBoostTrick2"), false, false, -1f);
                                     }
                                     else if (__instance.p.moveAxisY >= 0.25f)
                                     {
-                                        __instance.p.PlayAnim(Animator.StringToHash(skateboardAirTrick2), false, false, -1f);
+                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick2), false, false, -1f);
                                     }
                                     else
                                     {
-                                        __instance.p.PlayAnim(Animator.StringToHash("airTrick1"), false, false, -1f);
+                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("airTrick1"), false, false, -1f);
                                     }
                                 }
                                 else
                                 {
-                                    __instance.p.PlayAnim(Animator.StringToHash(skateboardAirTrick2), false, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick2), false, false, -1f);
                                 }
                             }
                             else
                             {
-                                __instance.p.PlayAnim(Animator.StringToHash(skateboardAirTrick2), false, false, -1f);
+                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick2), false, false, -1f);
                             }
                         }
                     }

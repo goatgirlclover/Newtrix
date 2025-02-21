@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace trickyclown
 {
-    [BepInPlugin("ConfigTrixGrindTricks", "New Trix Grinds", "1.4.0")]
+    [BepInPlugin("ConfigTrixGrindTricks", "New Trix Grinds", "1.4.1")]
     [BepInProcess("Bomb Rush Cyberfunk.exe")]
 
     public class GriTAPatchTC : BaseUnityPlugin
@@ -230,19 +230,19 @@ namespace trickyclown
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueFootGrindName5, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueFootGrind5), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueFootGrind5), true, false, 0f);
                 }
                 if (__instance.curTrick == 1)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueFootGrindName6, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueFootGrind6), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueFootGrind6), true, false, 0f);
                 }
                 if (__instance.curTrick == 2)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueFootGrindName7, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueFootGrind7), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueFootGrind7), true, false, 0f);
                 }
             }
             if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
@@ -251,19 +251,19 @@ namespace trickyclown
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueSkateboardGrindName5, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueSkateboardGrind5), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind5), true, false, 0f);
                 }
                 if (__instance.curTrick == 1)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueSkateboardGrindName6, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueSkateboardGrind6), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind6), true, false, 0f);
                 }
                 if (__instance.curTrick == 2)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueSkateboardGrindName7, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueSkateboardGrind7), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind7), true, false, 0f);
                 }
             }
             if (__instance.p.moveStyle == MoveStyle.INLINE)
@@ -272,19 +272,19 @@ namespace trickyclown
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueInlineGrindName5, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueInlineGrind5), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind5), true, false, 0f);
                 }
                 if (__instance.curTrick == 1)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueInlineGrindName6, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueInlineGrind6), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind6), true, false, 0f);
                 }
                 if (__instance.curTrick == 2)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueInlineGrindName7, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueInlineGrind7), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind7), true, false, 0f);
                 }
             }
             if (__instance.p.moveStyle == MoveStyle.BMX)
@@ -293,19 +293,19 @@ namespace trickyclown
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueBMXGrindName5, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueBMXGrind5), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind5), true, false, 0f);
                 }
                 if (__instance.curTrick == 1)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueBMXGrindName6, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueBMXGrind6), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind6), true, false, 0f);
                 }
                 if (__instance.curTrick == 2)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueBMXGrindName7, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueBMXGrind7), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind7), true, false, 0f);
                 }
             }
             return false;
@@ -384,19 +384,19 @@ namespace trickyclown
                     __instance.trickTimer = (__instance.curTrickDuration = __instance.trickStandardDuration);
                 if (__instance.p.moveStyle == MoveStyle.ON_FOOT)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueFootGrind1), false, false, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueFootGrind1), false, false, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueSkateboardGrind1), false, false, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind1), false, false, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.INLINE)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueInlineGrind1), false, false, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind1), false, false, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.BMX)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueBMXGrind1), false, false, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind1), false, false, -1f);
                 }
                 __instance.curTrick = 1;
                     return false;
@@ -413,22 +413,22 @@ namespace trickyclown
                 if (__instance.p.moveStyle == MoveStyle.ON_FOOT)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_START, configValueFootGrindName5, __instance.curTrick);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueFootGrind5), false, false, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueFootGrind5), false, false, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_START, configValueSkateboardGrindName5, __instance.curTrick);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueSkateboardGrind5), false, false, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind5), false, false, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.INLINE)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_START, configValueInlineGrindName5, __instance.curTrick);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueInlineGrind5), false, false, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind5), false, false, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.BMX)
                 {
                     __instance.p.DoTrick(Player.TrickType.GRIND_START, configValueBMXGrindName5, __instance.curTrick);
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueBMXGrind5), false, false, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind5), false, false, -1f);
                 }
             }
                 else
@@ -439,7 +439,7 @@ namespace trickyclown
                     {
                         if (__instance.curTrick == 0 && configValueFootGrind2 != null)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(configValueFootGrind2), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueFootGrind2), true, false, 0f);
                         }
                         else if (configValueFootGrind2 == null)
                         {
@@ -448,7 +448,7 @@ namespace trickyclown
 
                         if (__instance.curTrick == 1 && configValueFootGrind3 != null)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(configValueFootGrind3), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueFootGrind3), true, false, 0f);
                         }
                         else if (configValueFootGrind3 == null)
                         {
@@ -457,7 +457,7 @@ namespace trickyclown
 
                         if (__instance.curTrick == 2 && configValueFootGrind4 != null)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(configValueFootGrind4), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueFootGrind4), true, false, 0f);
                         }
                         else if (configValueFootGrind4 == null)
                         {
@@ -468,7 +468,7 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0 && configValueInlineGrind2 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueInlineGrind2), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind2), true, false, 0f);
                     }
                     else if (configValueInlineGrind2 == null)
                     {
@@ -477,7 +477,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueInlineGrind3 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueInlineGrind3), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind3), true, false, 0f);
                     }
                     else if (configValueInlineGrind3 == null)
                     {
@@ -486,7 +486,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueInlineGrind4 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueInlineGrind4), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind4), true, false, 0f);
                     }
                     else if (configValueInlineGrind4 == null)
                     {
@@ -497,7 +497,7 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0 && configValueSkateboardGrind2 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueSkateboardGrind2), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind2), true, false, 0f);
                     }
                     else if (configValueSkateboardGrind2 == null)
                     {
@@ -506,7 +506,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueSkateboardGrind3 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueSkateboardGrind3), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind3), true, false, 0f);
                     }
                     else if (configValueSkateboardGrind3 == null)
                     {
@@ -515,7 +515,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueSkateboardGrind4 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueSkateboardGrind4), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind4), true, false, 0f);
                     }
                     else if (configValueSkateboardGrind4 == null)
                     {
@@ -526,7 +526,7 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0 && configValueBMXGrind2 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueBMXGrind2), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind2), true, false, 0f);
                     }
                     else if (configValueBMXGrind2 == null)
                     {
@@ -535,7 +535,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueBMXGrind3 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueBMXGrind3), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind3), true, false, 0f);
                     }
                     else if (configValueBMXGrind3 == null)
                     {
@@ -544,7 +544,7 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueBMXGrind4 != null)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueBMXGrind4), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind4), true, false, 0f);
                     }
                     else if (configValueBMXGrind4 == null)
                     {

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace trickyclown
 {
-    [BepInPlugin("ConfigTrixAirTricks", "New Trix Air", "1.4.0")]
+    [BepInPlugin("ConfigTrixAirTricks", "New Trix Air", "1.4.1")]
     [BepInProcess("Bomb Rush Cyberfunk.exe")]
     public class ATAPatchTC : BaseUnityPlugin
     {
@@ -660,7 +660,7 @@ namespace trickyclown
                     {
                         if (__instance.p.moveAxisX <= -0.75f && footAirTrickLeft0 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickLeft0), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickLeft0), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickLeft0cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -668,7 +668,7 @@ namespace trickyclown
                         }
                         else if (__instance.p.moveAxisX >= 0.75f && footAirTrickRight0 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickRight0), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickRight0), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickRight0cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -676,7 +676,7 @@ namespace trickyclown
                         }
                         else if (__instance.p.moveAxisY >= 0.75f && footAirTrickUp0 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickUp0), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickUp0), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickUp0cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -684,7 +684,7 @@ namespace trickyclown
                         }
                         else if (__instance.p.moveAxisY <= -0.75f && footAirTrickDown0 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickDown0), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickDown0), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickDown0cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -692,7 +692,7 @@ namespace trickyclown
                         }
                         else
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(configValueAir10), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir10), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrick0cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -703,7 +703,7 @@ namespace trickyclown
                     {
                         if (__instance.p.moveAxisX <= -0.75f && footAirTrickLeft1 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickLeft1), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickLeft1), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickLeft1cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -711,7 +711,7 @@ namespace trickyclown
                         }
                         else if (__instance.p.moveAxisX >= 0.75f && footAirTrickRight1 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickRight1), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickRight1), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickRight1cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -719,7 +719,7 @@ namespace trickyclown
                         }
                         else if (__instance.p.moveAxisY >= 0.75f && footAirTrickUp1 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickUp1), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickUp1), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickUp1cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -727,7 +727,7 @@ namespace trickyclown
                         }
                         else if (__instance.p.moveAxisY <= -0.75f && footAirTrickDown1 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickDown1), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickDown1), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickDown1cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -735,7 +735,7 @@ namespace trickyclown
                         }
                         else
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(configValueAir11), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir11), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrick1cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -746,7 +746,7 @@ namespace trickyclown
                     {
                         if (__instance.p.moveAxisX <= -0.75f && footAirTrickLeft2 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickLeft2), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickLeft2), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickLeft2cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -754,7 +754,7 @@ namespace trickyclown
                         }
                         else if (__instance.p.moveAxisX >= 0.75f && footAirTrickRight2 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickRight2), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickRight2), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickRight2cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -762,7 +762,7 @@ namespace trickyclown
                         }
                         else if (__instance.p.moveAxisY >= 0.75f && footAirTrickUp2 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickUp2), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickUp2), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickUp2cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -770,7 +770,7 @@ namespace trickyclown
                         }
                         else if (__instance.p.moveAxisY <= -0.75f && footAirTrickDown2 != "")
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(footAirTrickDown2), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrickDown2), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrickDown2cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -778,7 +778,7 @@ namespace trickyclown
                         }
                         else
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(configValueAir12), true, false, 0f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir12), true, false, 0f);
                             if (ATAPatchTC.IdleOverrides["footAirTrick2cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -791,7 +791,7 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueAir7), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir7), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["bmxAirTrick0cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -799,7 +799,7 @@ namespace trickyclown
                     }
                     else if (__instance.curTrick == 1)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueAir8), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir8), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["bmxAirTrick1cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -807,7 +807,7 @@ namespace trickyclown
                     }
                     else if (__instance.curTrick == 2)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueAir9), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir9), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["bmxAirTrick2cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -818,7 +818,7 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueAir4), true, false, -1f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir4), true, false, -1f);
                         if (ATAPatchTC.IdleOverrides["inlineAirTrick0cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -826,7 +826,7 @@ namespace trickyclown
                     }
                     else if (__instance.curTrick == 1)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueAir5), true, false, -1f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir5), true, false, -1f);
                         if (ATAPatchTC.IdleOverrides["inlineAirTrick1cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -834,7 +834,7 @@ namespace trickyclown
                     }
                     else if (__instance.curTrick == 2)
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueAir6), true, false, -1f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir6), true, false, -1f);
                         if (ATAPatchTC.IdleOverrides["inlineAirTrick2cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -854,43 +854,43 @@ namespace trickyclown
                             {
                                 if (moveAxisY <= -0.25f || moveAxisY >= 0.25f)
                                 {
-                                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir), true, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir), true, false, -1f);
                                     if (ATAPatchTC.IdleOverrides["skateboardAirTrick0cfg"])
                                     { VertAbilityPatches.overridingIdle = true; }
                                     else
                                     { VertAbilityPatches.overridingIdle = false; }
                                 }
                                 else
-                                    __instance.p.PlayAnim(Animator.StringToHash("groundTrick0"), true, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundTrick0"), true, false, -1f);
                                 VertAbilityPatches.overridingIdle = false;
                             }
                             else if (moveAxisX >= 0.25f)
                             {
                                 if (moveAxisY <= -0.25f || moveAxisY >= 0.25f)
                                 {
-                                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir), true, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir), true, false, -1f);
                                     if (ATAPatchTC.IdleOverrides["skateboardAirTrick0cfg"])
                                     { VertAbilityPatches.overridingIdle = true; }
                                     else
                                     { VertAbilityPatches.overridingIdle = false; }
                                 }
                                 else
-                                    __instance.p.PlayAnim(Animator.StringToHash("groundTrick2"), true, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundTrick2"), true, false, -1f);
                                 VertAbilityPatches.overridingIdle = false;
                             }
                             else if (moveAxisY <= -0.25f)
                             {
-                                __instance.p.PlayAnim(Animator.StringToHash("grindTrick0"), true, false, -1f);
+                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("grindTrick0"), true, false, -1f);
                                 VertAbilityPatches.overridingIdle = false;
                             }
                             else if (moveAxisY >= 0.25f)
                             {
-                                __instance.p.PlayAnim(Animator.StringToHash("groundTrick3"), true, false, -1f);
+                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundTrick3"), true, false, -1f);
                                 VertAbilityPatches.overridingIdle = false;
                             }
                             else
                             {
-                                __instance.p.PlayAnim(Animator.StringToHash(configValueAir), true, false, -1f);
+                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir), true, false, -1f);
                                 if (ATAPatchTC.IdleOverrides["skateboardAirTrick0cfg"])
                                 { VertAbilityPatches.overridingIdle = true; }
                                 else
@@ -899,7 +899,7 @@ namespace trickyclown
                         }
                         else
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(configValueAir), true, false, -1f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir), true, false, -1f);
                             if (ATAPatchTC.IdleOverrides["skateboardAirTrick0cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -910,12 +910,12 @@ namespace trickyclown
                     {
                         if (enableTonyCfg && __instance.p.slideButtonHeld)
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash("groundBoostTrick0"), false, false, -1f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundBoostTrick0"), false, false, -1f);
                             VertAbilityPatches.overridingIdle = false;
                         }
                         else
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(configValueAir2), false, false, -1f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir2), false, false, -1f);
                             if (ATAPatchTC.IdleOverrides["skateboardAirTrick1cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -930,12 +930,12 @@ namespace trickyclown
                             {
                                 if (__instance.p.moveAxisY <= -0.25f)
                                 {
-                                    __instance.p.PlayAnim(Animator.StringToHash("airBoostTrick2"), false, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("airBoostTrick2"), false, false, -1f);
                                     VertAbilityPatches.overridingIdle = false;
                                 }
                                 else if (__instance.p.moveAxisY >= 0.25f)
                                 {
-                                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir3), false, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir3), false, false, -1f);
                                     if (ATAPatchTC.IdleOverrides["skateboardAirTrick1cfg"])
                                     { VertAbilityPatches.overridingIdle = true; }
                                     else
@@ -943,13 +943,13 @@ namespace trickyclown
                                 }
                                 else
                                 {
-                                    __instance.p.PlayAnim(Animator.StringToHash("airTrick1"), false, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("airTrick1"), false, false, -1f);
                                     VertAbilityPatches.overridingIdle = false;
                                 }
                             }
                             else
                             {
-                                __instance.p.PlayAnim(Animator.StringToHash(configValueAir3), false, false, -1f);
+                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir3), false, false, -1f);
                                 if (ATAPatchTC.IdleOverrides["skateboardAirTrick1cfg"])
                                 { VertAbilityPatches.overridingIdle = true; }
                                 else
@@ -958,7 +958,7 @@ namespace trickyclown
                         }
                         else
                         {
-                            __instance.p.PlayAnim(Animator.StringToHash(configValueAir3), false, false, -1f);
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir3), false, false, -1f);
                             if (ATAPatchTC.IdleOverrides["skateboardAirTrick1cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
                             else
@@ -1012,7 +1012,7 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["skateboardAirBoostTrick0cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
                     else
@@ -1020,7 +1020,7 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 1)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir2), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir2), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["skateboardAirBoostTrick1cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
                     else
@@ -1028,7 +1028,7 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 2)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir3), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir3), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["skateboardAirBoostTrick2cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
                     else
@@ -1039,7 +1039,7 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir4), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir4), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["inlineAirBoostTrick0cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
                     else
@@ -1047,7 +1047,7 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 1)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir5), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir5), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["inlineAirBoostTrick1cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
                     else
@@ -1055,7 +1055,7 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 2)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir6), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir6), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["inlineAirBoostTrick2cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
                     else
@@ -1066,7 +1066,7 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir7), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir7), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["bmxAirBoostTrick0cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
                     else
@@ -1074,7 +1074,7 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 1)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir8), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir8), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["bmxAirBoostTrick1cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
                     else
@@ -1082,7 +1082,7 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 2)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAir9), true, false, 0f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir9), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["bmxAirBoostTrick2cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
                     else
@@ -1096,7 +1096,7 @@ namespace trickyclown
                 {
                     if (__instance.p.moveAxisX <= -0.75f && footAirBoostTrickLeft0 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickLeft0), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickLeft0), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickLeft0cfg"])
                         {
                             //Console.WriteLine("trick overridingIdle = true");
@@ -1110,7 +1110,7 @@ namespace trickyclown
                     }
                     else if (__instance.p.moveAxisX >= 0.75f && footAirBoostTrickRight0 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickRight0), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickRight0), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickRight0cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1118,7 +1118,7 @@ namespace trickyclown
                     }
                     else if (__instance.p.moveAxisY >= 0.75f && footAirBoostTrickUp0 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickUp0), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickUp0), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickUp0cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1126,7 +1126,7 @@ namespace trickyclown
                     }
                     else if (__instance.p.moveAxisY <= -0.75f && footAirBoostTrickDown0 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickDown0), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickDown0), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickDown0cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1134,7 +1134,7 @@ namespace trickyclown
                     }
                     else
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueAir10), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir10), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrick0cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1145,7 +1145,7 @@ namespace trickyclown
                 {
                     if (__instance.p.moveAxisX <= -0.75f && footAirBoostTrickLeft1 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickLeft1), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickLeft1), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickLeft1cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1153,7 +1153,7 @@ namespace trickyclown
                     }
                     else if (__instance.p.moveAxisX >= 0.75f && footAirBoostTrickRight1 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickRight1), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickRight1), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickRight1cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1161,7 +1161,7 @@ namespace trickyclown
                     }
                     else if (__instance.p.moveAxisY >= 0.75f && footAirBoostTrickUp1 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickUp1), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickUp1), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickUp1cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1169,7 +1169,7 @@ namespace trickyclown
                     }
                     else if (__instance.p.moveAxisY <= -0.75f && footAirBoostTrickDown1 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickDown1), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickDown1), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickDown1cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1177,7 +1177,7 @@ namespace trickyclown
                     }
                     else
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueAir11), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir11), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrick1cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1188,7 +1188,7 @@ namespace trickyclown
                 {
                     if (__instance.p.moveAxisX <= -0.75f && footAirBoostTrickLeft2 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickLeft2), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickLeft2), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickLeft2cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1196,7 +1196,7 @@ namespace trickyclown
                     }
                     else if (__instance.p.moveAxisX >= 0.75f && footAirBoostTrickRight2 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickRight2), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickRight2), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickRight2cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1204,7 +1204,7 @@ namespace trickyclown
                     }
                     else if (__instance.p.moveAxisY >= 0.75f && footAirBoostTrickUp2 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickUp2), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickUp2), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickUp2cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1212,7 +1212,7 @@ namespace trickyclown
                     }
                     else if (__instance.p.moveAxisY <= -0.75f && footAirBoostTrickDown2 != "")
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(footAirBoostTrickDown2), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrickDown2), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrickDown2cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else
@@ -1220,7 +1220,7 @@ namespace trickyclown
                     }
                     else
                     {
-                        __instance.p.PlayAnim(Animator.StringToHash(configValueAir12), true, false, 0f);
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir12), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["footAirBoostTrick2cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
                         else

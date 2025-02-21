@@ -4,7 +4,7 @@
     <TargetFramework>net471</TargetFramework>
     <AssemblyName>NewTrix</AssemblyName>
     <Description>New Tricks for Bomb Rush Cyberfunk</Description>
-    <Version>1.4.0</Version>
+    <Version>1.4.1</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>

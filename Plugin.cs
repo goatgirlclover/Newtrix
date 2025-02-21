@@ -12,7 +12,7 @@ using BepInEx.Bootstrap;
 
 namespace trickyclown
 {
-    [BepInPlugin("info.mariobluegloves.trickyclown", "New Trix", "1.4.0")]
+    [BepInPlugin("info.mariobluegloves.trickyclown", "New Trix", "1.4.1")]
     [BepInDependency("com.Dragsun.BunchOfEmotes", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInProcess("Bomb Rush Cyberfunk.exe")]
     public class VertAbilityPatches : BaseUnityPlugin

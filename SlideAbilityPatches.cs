@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace newtrickx
 {
-    [BepInPlugin("ConfigTrixSlidesAndManuals", "New Trix Slides", "1.4.0")]
+    [BepInPlugin("ConfigTrixSlidesAndManuals", "New Trix Slides", "1.4.1")]
     [BepInProcess("Bomb Rush Cyberfunk.exe")]
     internal class SlideAbilityPatches : BaseUnityPlugin
     {
@@ -70,7 +70,7 @@ namespace newtrickx
             if (flag3)
             {
                 __instance.trickName = configValueSlide4;
-                __instance.rollHash = Animator.StringToHash(configValueSlide3);
+                __instance.rollHash = trickyclown.AnimationUtility.GetAnimationByName(configValueSlide3);
                 __instance.Crouch(true);
             }
             else
@@ -81,7 +81,7 @@ namespace newtrickx
                 if (flag6)
                 {
                     __instance.trickName = configValueSlide2;
-                    __instance.rollHash = Animator.StringToHash(configValueSlide);
+                    __instance.rollHash = trickyclown.AnimationUtility.GetAnimationByName(configValueSlide);
                 }
                 else
                 {
@@ -91,7 +91,7 @@ namespace newtrickx
                     if (flag9)
                     {
                         __instance.trickName = configValueSlide6;
-                        __instance.rollHash = Animator.StringToHash(configValueSlide5);
+                        __instance.rollHash = trickyclown.AnimationUtility.GetAnimationByName(configValueSlide5);
                     }
                     else
                     {
@@ -101,7 +101,7 @@ namespace newtrickx
                         if (flag12)
                         {
                             __instance.trickName = configValueSlide8;
-                            __instance.rollHash = Animator.StringToHash(configValueSlide7);
+                            __instance.rollHash = trickyclown.AnimationUtility.GetAnimationByName(configValueSlide7);
                         }
                     }
                 }

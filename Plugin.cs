@@ -8,10 +8,12 @@ using newtrickx;
 using CarJack.Common;
 using UnityEngine.SceneManagement;
 using BepInEx.Configuration;
+using BepInEx.Bootstrap;
 
 namespace trickyclown
 {
     [BepInPlugin("info.mariobluegloves.trickyclown", "New Trix", "1.4.0")]
+    [BepInDependency("com.Dragsun.BunchOfEmotes", BepInDependency.DependencyFlags.SoftDependency)]
     [BepInProcess("Bomb Rush Cyberfunk.exe")]
     public class VertAbilityPatches : BaseUnityPlugin
     {
@@ -32,6 +34,10 @@ namespace trickyclown
             harmony.PatchAll();
             Logger.LogInfo($"Trix R 4 Kidz");
             SceneManager.sceneLoaded += OnSceneLoaded;
+            if (Chainloader.PluginInfos.ContainsKey("com.Dragsun.BunchOfEmotes"))
+            {
+                BunchOfEmotesSupport.Initialize();
+            }
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -73,19 +79,19 @@ namespace trickyclown
                             //Console.WriteLine("overridingIdle = true");
                             if (wallrunLineAbility.p.moveStyle == MoveStyle.INLINE)
                             {
-                                wallrunLineAbility.p.PlayAnim(Animator.StringToHash(goonInline), false, false, -1f);
+                                wallrunLineAbility.p.PlayAnim(AnimationUtility.GetAnimationByName(goonInline), false, false, -1f);
                             }
                             else if (wallrunLineAbility.p.moveStyle == MoveStyle.SKATEBOARD)
                             {
-                                wallrunLineAbility.p.PlayAnim(Animator.StringToHash(goonSkateboard), false, false, -1f);
+                                wallrunLineAbility.p.PlayAnim(AnimationUtility.GetAnimationByName(goonSkateboard), false, false, -1f);
                             }
                             else if (wallrunLineAbility.p.moveStyle == MoveStyle.BMX)
                             {
-                                wallrunLineAbility.p.PlayAnim(Animator.StringToHash(goonBMX), false, false, -1f);
+                                wallrunLineAbility.p.PlayAnim(AnimationUtility.GetAnimationByName(goonBMX), false, false, -1f);
                             }
                             else if (wallrunLineAbility.p.moveStyle == MoveStyle.ON_FOOT)
                             {
-                                wallrunLineAbility.p.PlayAnim(Animator.StringToHash(goon), false, false, -1f);
+                                wallrunLineAbility.p.PlayAnim(AnimationUtility.GetAnimationByName(goon), false, false, -1f);
                             }
 
                             if (Core.Instance?.AudioManager != null)

@@ -26,8 +26,11 @@ namespace trickyclown
         public static void CacheAnimationsIfNecessary()
         {
             if (Cached) return;
-            Cached = true;
             var boeDictionary = CustomAnimsField.GetValue(BoEPluginInstance) as Dictionary<int, string>;
+            if (boeDictionary != null && boeDictionary.Count > 0)
+                Cached = true;
+            else
+                return;
             foreach (var customAnim in boeDictionary)
             {
                 var gameAnim = customAnim.Key;

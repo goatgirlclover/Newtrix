@@ -79,19 +79,19 @@ namespace trickyclown
                             //Console.WriteLine("overridingIdle = true");
                             if (wallrunLineAbility.p.moveStyle == MoveStyle.INLINE)
                             {
-                                wallrunLineAbility.p.PlayAnim(Animator.StringToHash(goonInline), false, false, -1f);
+                                wallrunLineAbility.p.PlayAnim(AnimationUtility.GetAnimationByName(goonInline), false, false, -1f);
                             }
                             else if (wallrunLineAbility.p.moveStyle == MoveStyle.SKATEBOARD)
                             {
-                                wallrunLineAbility.p.PlayAnim(Animator.StringToHash(goonSkateboard), false, false, -1f);
+                                wallrunLineAbility.p.PlayAnim(AnimationUtility.GetAnimationByName(goonSkateboard), false, false, -1f);
                             }
                             else if (wallrunLineAbility.p.moveStyle == MoveStyle.BMX)
                             {
-                                wallrunLineAbility.p.PlayAnim(Animator.StringToHash(goonBMX), false, false, -1f);
+                                wallrunLineAbility.p.PlayAnim(AnimationUtility.GetAnimationByName(goonBMX), false, false, -1f);
                             }
                             else if (wallrunLineAbility.p.moveStyle == MoveStyle.ON_FOOT)
                             {
-                                wallrunLineAbility.p.PlayAnim(Animator.StringToHash(goon), false, false, -1f);
+                                wallrunLineAbility.p.PlayAnim(AnimationUtility.GetAnimationByName(goon), false, false, -1f);
                             }
 
                             if (Core.Instance?.AudioManager != null)

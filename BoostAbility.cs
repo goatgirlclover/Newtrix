@@ -274,58 +274,58 @@ namespace trickyclown
                 __instance.idleFidget1Hash = Animator.StringToHash(idleFidget1Inline);
                 if (VertAbilityPatches.overridingIdle == true) 
                 {
-                    __instance.fallHash = Animator.StringToHash("");
+                    __instance.fallHash = AnimationUtility.GetAnimationByName("");
                 }
                 else
-                    __instance.fallHash = Animator.StringToHash(fallInline);
+                    __instance.fallHash = AnimationUtility.GetAnimationByName(fallInline);
             }
             else if (__instance.moveStyle == MoveStyle.SKATEBOARD)
             {
-                __instance.landRunHash = Animator.StringToHash(landRunSkateboard);
-                __instance.startRunHash = Animator.StringToHash(startRunSkateboard);
-                __instance.stopRunHash = Animator.StringToHash(stopRunSkateboard);
-                __instance.walkHash = Animator.StringToHash(walkSkateboard);
-                __instance.runHash = Animator.StringToHash(runSkateboard);
-                __instance.idleHash = Animator.StringToHash(idleSkateboard);
-                __instance.idleFidget1Hash = Animator.StringToHash(idleFidget1Skateboard);
+                __instance.landRunHash = AnimationUtility.GetAnimationByName(landRunSkateboard);
+                __instance.startRunHash = AnimationUtility.GetAnimationByName(startRunSkateboard);
+                __instance.stopRunHash = AnimationUtility.GetAnimationByName(stopRunSkateboard);
+                __instance.walkHash = AnimationUtility.GetAnimationByName(walkSkateboard);
+                __instance.runHash = AnimationUtility.GetAnimationByName(runSkateboard);
+                __instance.idleHash = AnimationUtility.GetAnimationByName(idleSkateboard);
+                __instance.idleFidget1Hash = AnimationUtility.GetAnimationByName(idleFidget1Skateboard);
                 if (VertAbilityPatches.overridingIdle == true)
                 {
-                    __instance.fallHash = Animator.StringToHash("");
+                    __instance.fallHash = AnimationUtility.GetAnimationByName("");
                 }
                 else
-                    __instance.fallHash = Animator.StringToHash(fallSkateboard);
+                    __instance.fallHash = AnimationUtility.GetAnimationByName(fallSkateboard);
             }
             else if (__instance.moveStyle == MoveStyle.BMX)
             {
-                __instance.landRunHash = Animator.StringToHash(landRunBMX);
-                __instance.startRunHash = Animator.StringToHash(startRunBMX);
-                __instance.stopRunHash = Animator.StringToHash(stopRunBMX);
-                __instance.walkHash = Animator.StringToHash(walkBMX);
-                __instance.runHash = Animator.StringToHash(runBMX);
-                __instance.idleHash = Animator.StringToHash(idleBMX);
-                __instance.idleFidget1Hash = Animator.StringToHash(idleFidget1BMX);
+                __instance.landRunHash = AnimationUtility.GetAnimationByName(landRunBMX);
+                __instance.startRunHash = AnimationUtility.GetAnimationByName(startRunBMX);
+                __instance.stopRunHash = AnimationUtility.GetAnimationByName(stopRunBMX);
+                __instance.walkHash = AnimationUtility.GetAnimationByName(walkBMX);
+                __instance.runHash = AnimationUtility.GetAnimationByName(runBMX);
+                __instance.idleHash = AnimationUtility.GetAnimationByName(idleBMX);
+                __instance.idleFidget1Hash = AnimationUtility.GetAnimationByName(idleFidget1BMX);
                 if (VertAbilityPatches.overridingIdle == true)
                 {
-                    __instance.fallHash = Animator.StringToHash("");
+                    __instance.fallHash = AnimationUtility.GetAnimationByName("");
                 }
                 else
-                    __instance.fallHash = Animator.StringToHash(fallBMX);
+                    __instance.fallHash = AnimationUtility.GetAnimationByName(fallBMX);
             }
             else if (__instance.moveStyle == MoveStyle.ON_FOOT)
             {
-                __instance.landRunHash = Animator.StringToHash(landRun);
-                __instance.startRunHash = Animator.StringToHash(startRun);
-                __instance.stopRunHash = Animator.StringToHash(stopRun);
-                __instance.walkHash = Animator.StringToHash(walk);
-                __instance.runHash = Animator.StringToHash(run);
-                __instance.idleHash = Animator.StringToHash(idle);
-                __instance.idleFidget1Hash = Animator.StringToHash(idleFidget1);
+                __instance.landRunHash = AnimationUtility.GetAnimationByName(landRun);
+                __instance.startRunHash = AnimationUtility.GetAnimationByName(startRun);
+                __instance.stopRunHash = AnimationUtility.GetAnimationByName(stopRun);
+                __instance.walkHash = AnimationUtility.GetAnimationByName(walk);
+                __instance.runHash = AnimationUtility.GetAnimationByName(run);
+                __instance.idleHash = AnimationUtility.GetAnimationByName(idle);
+                __instance.idleFidget1Hash = AnimationUtility.GetAnimationByName(idleFidget1);
                 if (VertAbilityPatches.overridingIdle == true)
                 {
-                    __instance.fallHash = Animator.StringToHash("");
+                    __instance.fallHash = AnimationUtility.GetAnimationByName("");
                 }
                 else
-                    __instance.fallHash = Animator.StringToHash(fall);
+                    __instance.fallHash = AnimationUtility.GetAnimationByName(fall);
             }
 
         }
@@ -341,19 +341,19 @@ namespace trickyclown
 
             if (__instance.moveStyle == MoveStyle.INLINE)
             {
-                __instance.PlayAnim(Animator.StringToHash(jumpInline), false, false, -1f);
+                __instance.PlayAnim(AnimationUtility.GetAnimationByName(jumpInline), false, false, -1f);
             }
             else if (__instance.moveStyle == MoveStyle.SKATEBOARD)
             {
-                __instance.PlayAnim(Animator.StringToHash(jumpSkateboard), false, false, -1f);
+                __instance.PlayAnim(AnimationUtility.GetAnimationByName(jumpSkateboard), false, false, -1f);
             }
             else if (__instance.moveStyle == MoveStyle.BMX)
             {
-                __instance.PlayAnim(Animator.StringToHash(jumpBMX), false, false, -1f);
+                __instance.PlayAnim(AnimationUtility.GetAnimationByName(jumpBMX), false, false, -1f);
             }
             else if (__instance.moveStyle == MoveStyle.ON_FOOT)
             {
-                __instance.PlayAnim(Animator.StringToHash(jump), false, false, -1f);
+                __instance.PlayAnim(AnimationUtility.GetAnimationByName(jump), false, false, -1f);
             }
         }
 
@@ -539,30 +539,30 @@ namespace trickyclown
             {
                 if (__instance.p.moveStyle == MoveStyle.INLINE)
                 {
-                    __instance.jumpHash = Animator.StringToHash(jumpInline);
-                    __instance.boostRunHash = Animator.StringToHash(configValueAirBoostInline);
-                    int animationHash = __instance.p.IsGrounded() ? Animator.StringToHash(configValueGroundBoostInline) : __instance.boostRunHash;
+                    __instance.jumpHash = AnimationUtility.GetAnimationByName(jumpInline);
+                    __instance.boostRunHash = AnimationUtility.GetAnimationByName(configValueAirBoostInline);
+                    int animationHash = __instance.p.IsGrounded() ? AnimationUtility.GetAnimationByName(configValueGroundBoostInline) : __instance.boostRunHash;
                     __instance.p.PlayAnim(animationHash, false, false, -1f);
                 }
                 if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
                 {
-                    __instance.jumpHash = Animator.StringToHash(jumpSkateboard);
-                    __instance.boostRunHash = Animator.StringToHash(configValueAirBoostSkateboard);
-                    int animationHash = __instance.p.IsGrounded() ? Animator.StringToHash(configValueGroundBoostSkateboard) : __instance.boostRunHash;
+                    __instance.jumpHash = AnimationUtility.GetAnimationByName(jumpSkateboard);
+                    __instance.boostRunHash = AnimationUtility.GetAnimationByName(configValueAirBoostSkateboard);
+                    int animationHash = __instance.p.IsGrounded() ? AnimationUtility.GetAnimationByName(configValueGroundBoostSkateboard) : __instance.boostRunHash;
                     __instance.p.PlayAnim(animationHash, false, false, -1f);
                 }
                 if (__instance.p.moveStyle == MoveStyle.BMX)
                 {
-                    __instance.jumpHash = Animator.StringToHash(jumpBMX);
-                    __instance.boostRunHash = Animator.StringToHash(configValueAirBoostBMX);
-                    int animationHash = __instance.p.IsGrounded() ? Animator.StringToHash(configValueGroundBoostBMX) : __instance.boostRunHash;
+                    __instance.jumpHash = AnimationUtility.GetAnimationByName(jumpBMX);
+                    __instance.boostRunHash = AnimationUtility.GetAnimationByName(configValueAirBoostBMX);
+                    int animationHash = __instance.p.IsGrounded() ? AnimationUtility.GetAnimationByName(configValueGroundBoostBMX) : __instance.boostRunHash;
                     __instance.p.PlayAnim(animationHash, false, false, -1f);
                 }
                 if (__instance.p.moveStyle == MoveStyle.ON_FOOT)
                 {
-                    __instance.jumpHash = Animator.StringToHash(jump);
-                    __instance.boostRunHash = Animator.StringToHash(configValueAirBoost);
-                    int animationHash = __instance.p.IsGrounded() ? Animator.StringToHash(configValueGroundBoost) : __instance.boostRunHash;
+                    __instance.jumpHash = AnimationUtility.GetAnimationByName(jump);
+                    __instance.boostRunHash = AnimationUtility.GetAnimationByName(configValueAirBoost);
+                    int animationHash = __instance.p.IsGrounded() ? AnimationUtility.GetAnimationByName(configValueGroundBoost) : __instance.boostRunHash;
                     __instance.p.PlayAnim(animationHash, false, false, -1f);
                 }
             }
@@ -570,19 +570,19 @@ namespace trickyclown
             {
                 if (__instance.p.moveStyle == MoveStyle.INLINE)
                 {
-                    __instance.boostBrakeHash = Animator.StringToHash(configValueBoostBrakeInline);
+                    __instance.boostBrakeHash = AnimationUtility.GetAnimationByName(configValueBoostBrakeInline);
                 }
                 if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
                 {
-                    __instance.boostBrakeHash = Animator.StringToHash(configValueBoostBrakeSkateboard);
+                    __instance.boostBrakeHash = AnimationUtility.GetAnimationByName(configValueBoostBrakeSkateboard);
                 }
                 if (__instance.p.moveStyle == MoveStyle.BMX)
                 {
-                    __instance.boostBrakeHash = Animator.StringToHash(configValueBoostBrakeBMX);
+                    __instance.boostBrakeHash = AnimationUtility.GetAnimationByName(configValueBoostBrakeBMX);
                 }
                 if (__instance.p.moveStyle == MoveStyle.ON_FOOT)
                 {
-                    __instance.boostBrakeHash = Animator.StringToHash(configValueBoostBrake);
+                    __instance.boostBrakeHash = AnimationUtility.GetAnimationByName(configValueBoostBrake);
                 }
             }
 
@@ -590,19 +590,19 @@ namespace trickyclown
             {
                 if (__instance.p.moveStyle == MoveStyle.INLINE)
                 {
-                    __instance.startBoostHash = Animator.StringToHash(configValueBoostStartInline);
+                    __instance.startBoostHash = AnimationUtility.GetAnimationByName(configValueBoostStartInline);
                 }
                 if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
                 {
-                    __instance.startBoostHash = Animator.StringToHash(configValueBoostStartSkateboard);
+                    __instance.startBoostHash = AnimationUtility.GetAnimationByName(configValueBoostStartSkateboard);
                 }
                 if (__instance.p.moveStyle == MoveStyle.BMX)
                 {
-                    __instance.startBoostHash = Animator.StringToHash(configValueBoostStartBMX);
+                    __instance.startBoostHash = AnimationUtility.GetAnimationByName(configValueBoostStartBMX);
                 }
                 if (__instance.p.moveStyle == MoveStyle.ON_FOOT)
                 {
-                    __instance.startBoostHash = Animator.StringToHash(configValueBoostStart);
+                    __instance.startBoostHash = AnimationUtility.GetAnimationByName(configValueBoostStart);
                 }
             }
         }

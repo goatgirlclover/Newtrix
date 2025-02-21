@@ -13,7 +13,6 @@ namespace trickyclown
         private static FieldInfo CustomAnimsField = null;
         private static bool Cached = false;
         private static Dictionary<string, int> GameAnimationByCustomAnimation = new();
-        private static Dictionary<int, string> CustomAnimationByGameAnimation = new();
 
         public static void Initialize()
         {
@@ -35,7 +34,6 @@ namespace trickyclown
             {
                 var gameAnim = customAnim.Key;
                 GameAnimationByCustomAnimation[customAnim.Value] = gameAnim;
-                CustomAnimationByGameAnimation[gameAnim] = customAnim.Value;
             }
         }
 
@@ -48,19 +46,6 @@ namespace trickyclown
             }
             CacheAnimationsIfNecessary();
             if (GameAnimationByCustomAnimation.TryGetValue(customAnim, out gameAnim))
-                return true;
-            return false;
-        }
-
-        public static bool TryGetCustomAnimationByGameAnimation(int gameAnim, out string customAnim)
-        {
-            if (!Installed)
-            {
-                customAnim = "";
-                return false;
-            }
-            CacheAnimationsIfNecessary();
-            if (CustomAnimationByGameAnimation.TryGetValue(gameAnim, out customAnim))
                 return true;
             return false;
         }

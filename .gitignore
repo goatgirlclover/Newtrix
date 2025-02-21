@@ -1,0 +1,5 @@
+.git/
+.vs/
+libs/
+obj/
+bin/

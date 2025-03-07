@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Collections.Generic;
 using System.Linq;
 using BepInEx.Configuration;
+using System.Reflection.Emit;
 
 namespace trickyclown
 {
@@ -41,7 +42,7 @@ namespace trickyclown
             wallrunDuration = 0f;
             //isWallRunning = true;
             VertAbilityPatches.overridingIdle = false;
-            Console.WriteLine("overridingIdle = false");
+            //Console.WriteLine("overridingIdle = false");
         }
 
         [HarmonyPatch("FixedUpdateAbility")]
@@ -265,13 +266,13 @@ namespace trickyclown
 
             if (__instance.moveStyle == MoveStyle.INLINE)
             {
-                __instance.landRunHash = Animator.StringToHash(landRunInline);
-                __instance.startRunHash = Animator.StringToHash(startRunInline);
-                __instance.stopRunHash = Animator.StringToHash(stopRunInline);
-                __instance.walkHash = Animator.StringToHash(walkInline);
-                __instance.runHash = Animator.StringToHash(runInline);
-                __instance.idleHash = Animator.StringToHash(idleInline);
-                __instance.idleFidget1Hash = Animator.StringToHash(idleFidget1Inline);
+                __instance.landRunHash = AnimationUtility.GetAnimationByName(landRunInline);
+                __instance.startRunHash = AnimationUtility.GetAnimationByName(startRunInline);
+                __instance.stopRunHash = AnimationUtility.GetAnimationByName(stopRunInline);
+                __instance.walkHash = AnimationUtility.GetAnimationByName(walkInline);
+                __instance.runHash = AnimationUtility.GetAnimationByName(runInline);
+                __instance.idleHash = AnimationUtility.GetAnimationByName(idleInline);
+                __instance.idleFidget1Hash = AnimationUtility.GetAnimationByName(idleFidget1Inline);
                 if (VertAbilityPatches.overridingIdle == true) 
                 {
                     __instance.fallHash = AnimationUtility.GetAnimationByName("");
@@ -368,19 +369,19 @@ namespace trickyclown
 
             if (__instance.p.moveStyle == MoveStyle.ON_FOOT)
             {
-                __instance.poleFreezeHash = Animator.StringToHash(poleFreeze);
+                __instance.poleFreezeHash = AnimationUtility.GetAnimationByName(poleFreeze);
             }
             if (__instance.p.moveStyle == MoveStyle.INLINE)
             {
-                __instance.poleFreezeHash = Animator.StringToHash(poleFreezeInline);
+                __instance.poleFreezeHash = AnimationUtility.GetAnimationByName(poleFreezeInline);
             }
             if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
             {
-                __instance.poleFreezeHash = Animator.StringToHash(poleFreezeSkateboard);
+                __instance.poleFreezeHash = AnimationUtility.GetAnimationByName(poleFreezeSkateboard);
             }
             if (__instance.p.moveStyle == MoveStyle.BMX)
             {
-                __instance.poleFreezeHash = Animator.StringToHash(poleFreezeBMX);
+                __instance.poleFreezeHash = AnimationUtility.GetAnimationByName(poleFreezeBMX);
             }
         }
 
@@ -395,19 +396,19 @@ namespace trickyclown
 
             if (__instance.p.moveStyle == MoveStyle.ON_FOOT)
             {
-                __instance.jumpTrick1Hash = Animator.StringToHash(jumpTrick);
+                __instance.jumpTrick1Hash = AnimationUtility.GetAnimationByName(jumpTrick);
             }
             if (__instance.p.moveStyle == MoveStyle.INLINE)
             {
-                __instance.jumpTrick1Hash = Animator.StringToHash(jumpTrickInline);
+                __instance.jumpTrick1Hash = AnimationUtility.GetAnimationByName(jumpTrickInline);
             }
             if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
             {
-                __instance.jumpTrick1Hash = Animator.StringToHash(jumpTrickSkateboard);
+                __instance.jumpTrick1Hash = AnimationUtility.GetAnimationByName(jumpTrickSkateboard);
             }
             if (__instance.p.moveStyle == MoveStyle.BMX)
             {
-                __instance.jumpTrick1Hash = Animator.StringToHash(jumpTrickBMX);
+                __instance.jumpTrick1Hash = AnimationUtility.GetAnimationByName(jumpTrickBMX);
             }
         }
 
@@ -422,19 +423,19 @@ namespace trickyclown
 
             if (__instance.p.moveStyle == MoveStyle.ON_FOOT)
             {
-                __instance.poleFlipHash = Animator.StringToHash(poleFlip);
+                __instance.poleFlipHash = AnimationUtility.GetAnimationByName(poleFlip);
             }
             if (__instance.p.moveStyle == MoveStyle.INLINE)
             {
-                __instance.poleFlipHash = Animator.StringToHash(poleFlipInline);
+                __instance.poleFlipHash = AnimationUtility.GetAnimationByName(poleFlipInline);
             }
             if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
             {
-                __instance.poleFlipHash = Animator.StringToHash(poleFlipSkateboard);
+                __instance.poleFlipHash = AnimationUtility.GetAnimationByName(poleFlipSkateboard);
             }
             if (__instance.p.moveStyle == MoveStyle.BMX)
             {
-                __instance.poleFlipHash = Animator.StringToHash(poleFlipBMX);
+                __instance.poleFlipHash = AnimationUtility.GetAnimationByName(poleFlipBMX);
             }
         }
 
@@ -451,19 +452,19 @@ namespace trickyclown
         //    {
         //        if (__instance.p.moveStyle == MoveStyle.INLINE && airBoostBrakeInline != "")
         //        {
-        //            __instance.p.PlayAnim(Animator.StringToHash(airBoostBrakeInline), false, false, -1f);
+        //            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(airBoostBrakeInline), false, false, -1f);
         //        }
         //        if (__instance.p.moveStyle == MoveStyle.SKATEBOARD && airBoostBrakeSkateboard != "")
         //        {
-        //            __instance.p.PlayAnim(Animator.StringToHash(airBoostBrakeSkateboard), false, false, -1f);
+        //            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(airBoostBrakeSkateboard), false, false, -1f);
         //        }
         //        if (__instance.p.moveStyle == MoveStyle.BMX && airBoostBrakeBMX != "")
         //        {
-        //            __instance.p.PlayAnim(Animator.StringToHash(airBoostBrakeBMX), false, false, -1f);
+        //            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(airBoostBrakeBMX), false, false, -1f);
         //        }
         //        if (__instance.p.moveStyle == MoveStyle.ON_FOOT && airBoostBrake != "")
         //        {
-        //            __instance.p.PlayAnim(Animator.StringToHash(airBoostBrake), false, false, -1f);
+        //            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(airBoostBrake), false, false, -1f);
         //        }
         //    }
         //}
@@ -484,19 +485,19 @@ namespace trickyclown
             {
                 if (__instance.p.moveStyle == MoveStyle.INLINE)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAirDashInline), true, true, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAirDashInline), true, true, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAirDashSkateboard), true, true, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAirDashSkateboard), true, true, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.BMX)
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAirDashBmx), true, true, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAirDashBmx), true, true, -1f);
                 }
                 else
                 {
-                    __instance.p.PlayAnim(Animator.StringToHash(configValueAirDash), true, true, -1f);
+                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAirDash), true, true, -1f);
                 }
             }
         }

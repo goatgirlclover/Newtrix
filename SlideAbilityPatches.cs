@@ -4,6 +4,7 @@ using BepInEx;
 using BepInEx.Configuration;
 using HarmonyLib;
 using Reptile;
+using trickyclown;
 using UnityEngine;
 
 namespace newtrickx
@@ -13,6 +14,8 @@ namespace newtrickx
     internal class SlideAbilityPatches : BaseUnityPlugin
     {
         public static SlideAbilityPatches Instance { get; private set; }
+
+        public static Dictionary<string, bool> IdleOverrides = new Dictionary<string, bool>();
 
         private void Awake()
         {
@@ -26,6 +29,13 @@ namespace newtrickx
             this.configEntriesSlide["slideInlineNameCfg"] = base.Config.Bind<string>("Manual/Slide/Roll", "slideInlineCfgName", "Cess Slide", "Inline Slide Name");
             this.configEntriesSlide["slideBmxCfg"] = base.Config.Bind<string>("Manual/Slide/Roll", "slideBmxCfg", "roll", "BMX Manual");
             this.configEntriesSlide["slideBmxNameCfg"] = base.Config.Bind<string>("Manual/Slide/Roll", "slideBmxCfgName", "Manual", "BMX Manual Name");
+
+            //CONTROLLER OVERRIDES
+            IdleOverrides["skateboardSlidecfgAnim"] = Config.Bind("Manual/Slide/Roll", "Skateboard Slide Override Anim", false, "Set to on-foot animator for Skateboard Slide").Value;
+
+            IdleOverrides["inlineSlidecfgAnim"] = Config.Bind("Manual/Slide/Roll", "Inline Slide Override Anim", false, "Set to on-foot animator for Inline Slide").Value;
+
+            IdleOverrides["bmxSlidecfgAnim"] = Config.Bind("Manual/Slide/Roll", "Bmx Slide Override Anim", false, "Set to on-foot animator for Bmx Slide").Value;
         }
 
         public string GetConfigValueSlide(string key)
@@ -80,6 +90,8 @@ namespace newtrickx
                 bool flag6 = flag5;
                 if (flag6)
                 {
+                    ATAPatchTC.CheckAnimOverride(SlideAbilityPatches.IdleOverrides["skateboardSlidecfgAnim"]);
+
                     __instance.trickName = configValueSlide2;
                     __instance.rollHash = trickyclown.AnimationUtility.GetAnimationByName(configValueSlide);
                 }
@@ -90,6 +102,8 @@ namespace newtrickx
                     bool flag9 = flag8;
                     if (flag9)
                     {
+                        ATAPatchTC.CheckAnimOverride(SlideAbilityPatches.IdleOverrides["inlineSlidecfgAnim"]);
+
                         __instance.trickName = configValueSlide6;
                         __instance.rollHash = trickyclown.AnimationUtility.GetAnimationByName(configValueSlide5);
                     }
@@ -100,11 +114,18 @@ namespace newtrickx
                         bool flag12 = flag11;
                         if (flag12)
                         {
+                            ATAPatchTC.CheckAnimOverride(SlideAbilityPatches.IdleOverrides["bmxSlidecfgAnim"]);
+
                             __instance.trickName = configValueSlide8;
                             __instance.rollHash = trickyclown.AnimationUtility.GetAnimationByName(configValueSlide7);
                         }
                     }
                 }
+                                //MOVESTYLER FIX
+                                if (VertAbilityPatches.nonVanillaMovestyle)
+                                {
+                                __instance.rollHash = Animator.StringToHash("roll");
+                                }
             }
             __instance.SetSlideState(SlideAbility.SlideState.ROLL);
             bool flag19 = __instance.p.lastElevationForSlideBoost > __instance.p.tf.position.y + 0.5f;

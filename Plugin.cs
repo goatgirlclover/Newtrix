@@ -9,6 +9,9 @@ using CarJack.Common;
 using UnityEngine.SceneManagement;
 using BepInEx.Configuration;
 using BepInEx.Bootstrap;
+using System.Collections.Generic;
+using System.Reflection.Emit;
+using System.Numerics;
 
 namespace trickyclown
 {
@@ -21,6 +24,14 @@ namespace trickyclown
 
         public static bool overridingIdle = false;
 
+        public static Animator anim2;
+        public static MoveStyle setMovestyle2;
+
+        public static bool forcingFootController = false;
+
+        public static bool nonVanillaMovestyle = false;
+        public static bool hasInitAnimForMovestyler = false;
+
         private void Awake()
         {
             var harmony = new Harmony("info.mariobluegloves.trickyclownp");
@@ -30,7 +41,7 @@ namespace trickyclown
             harmony.PatchAll(typeof(BPatchTC));
             harmony.PatchAll(typeof(SlideAbilityPatches));
             harmony.PatchAll(typeof(WallrunLineAbilityPatches));
-            harmony.PatchAll(typeof(DoTrickPatch));
+            harmony.PatchAll(typeof(VertAbilityPatches2));
             harmony.PatchAll();
             Logger.LogInfo($"Trix R 4 Kidz");
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -38,12 +49,75 @@ namespace trickyclown
             {
                 BunchOfEmotesSupport.Initialize();
             }
+
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             sceneLoaded = true;
         }
+
+        public static void UseFootController()
+        {
+            Console.WriteLine("attempting to use foot controller");
+            CharacterVisual characterVisual = new CharacterVisual();
+
+            GameObject playerHuman0 = GameObject.Find("Player_HUMAN0");
+            if (playerHuman0 != null)
+            {
+                Player p = playerHuman0.GetComponent<Player>();
+                if (p != null)
+                {
+                    anim2 = p.GetComponentInChildren<Animator>();
+                    if (anim2 != null && forcingFootController == false)
+                    {
+                        Console.WriteLine("setting to onfoot controller");
+                        forcingFootController = true;
+                        anim2.runtimeAnimatorController = p.animatorController;
+                    }
+                }
+            }
+        }
+
+        public static void RestoreAnimController()
+        {
+            Console.WriteLine("attempting to restore normal controller");
+            CharacterVisual characterVisual = new CharacterVisual();
+
+            GameObject playerHuman0 = GameObject.Find("Player_HUMAN0");
+            if (playerHuman0 != null)
+            {
+                Player p = playerHuman0.GetComponent<Player>();
+                if (p != null)
+                {
+                    anim2 = p.GetComponentInChildren<Animator>();
+                    setMovestyle2 = p.moveStyle;
+                    if (anim2 != null && setMovestyle2 != null)
+                    {
+                        forcingFootController = false;
+                        switch (setMovestyle2)
+                        {
+                            case MoveStyle.ON_FOOT:
+                                anim2.runtimeAnimatorController = p.animatorController;
+                                return;
+                            case MoveStyle.BMX:
+                                anim2.runtimeAnimatorController = p.animatorControllerBMX;
+                                return;
+                            case MoveStyle.SKATEBOARD:
+                            case MoveStyle.SPECIAL_SKATEBOARD:
+                                anim2.runtimeAnimatorController = p.animatorControllerSkateboard;
+                                return;
+                            case MoveStyle.INLINE:
+                                anim2.runtimeAnimatorController = p.animatorControllerSkates;
+                                break;
+                            default:
+                                return;
+                        }
+                    }
+                }
+            }
+        }
+
 
         void Update()
         {
@@ -60,7 +134,20 @@ namespace trickyclown
                     Player p = playerHuman0.GetComponent<Player>();
                     if (p != null)
                     {
-                        if (p.IsGrounded()) { VertAbilityPatches.overridingIdle = false; }
+                        //HANDLE MOVESTYLER CHECK AND INITIALIZING ANIMATIONS FOR IT
+                        if (p.moveStyle != MoveStyle.ON_FOOT && p.moveStyle != MoveStyle.INLINE && p.moveStyle != MoveStyle.SKATEBOARD && p.moveStyle != MoveStyle.BMX)
+                        { nonVanillaMovestyle = true; }
+                        else { nonVanillaMovestyle = false; }
+
+                        if (nonVanillaMovestyle == false)
+                        {
+                            hasInitAnimForMovestyler = false;
+                        }
+
+                        if (p.IsGrounded()) 
+                        {
+                            VertAbilityPatches.overridingIdle = false;
+                        }
 
                         WallrunLineAbilityPatches.postWallrunTimer += Time.deltaTime;
 
@@ -74,7 +161,13 @@ namespace trickyclown
                             WallrunLineAbilityPatches.hasWallRan = false;
 
                             WallrunLineAbility wallrunLineAbility = new WallrunLineAbility(p);
-                            wallrunLineAbility.p.DoTrick(Player.TrickType.NONE, "Frameride", 0);
+
+                            //FRAMERIDE TRICK
+                            if (BPatchTC.enableFramerideCfg.Value)
+                            {
+                                wallrunLineAbility.p.DoTrick(Player.TrickType.WALLRUN, "Frameride", 0);
+                            }
+
                             VertAbilityPatches.overridingIdle = true;
                             //Console.WriteLine("overridingIdle = true");
                             if (wallrunLineAbility.p.moveStyle == MoveStyle.INLINE)
@@ -94,9 +187,13 @@ namespace trickyclown
                                 wallrunLineAbility.p.PlayAnim(AnimationUtility.GetAnimationByName(goon), false, false, -1f);
                             }
 
-                            if (Core.Instance?.AudioManager != null)
+                            //FRAMERIDE SOUND
+                            if (BPatchTC.enableFramerideSoundCfg.Value)
                             {
-                                Core.Instance.AudioManager.PlaySfxGameplay(SfxCollectionID.MenuSfx, AudioClipID.confirm, 0.125f);
+                                if (Core.Instance?.AudioManager != null)
+                                {
+                                    Core.Instance.AudioManager.PlaySfxGameplay(SfxCollectionID.MenuSfx, AudioClipID.confirm, 0.125f);
+                                }
                             }
                         }
                     }

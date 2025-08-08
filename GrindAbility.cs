@@ -18,14 +18,27 @@ namespace trickyclown
 
         private Dictionary<string, ConfigEntry<string>> configEntries;
 
+        public static Dictionary<string, bool> IdleOverrides = new Dictionary<string, bool>();
+
         [HarmonyPatch(typeof(GrindAbility), nameof(GrindAbility.FixedUpdateAbility))]
         [HarmonyPostfix]
         private static void FixedUpdateAbilityPRF(GrindAbility __instance)
         {
             VertAbilityPatches.overridingIdle = false;
         }
+        public static void CheckAnimOverride(bool overrideAnim)
+        {
+            if (overrideAnim)
+            {
+                VertAbilityPatches.UseFootController();
+            }
+            else
+            {
+                VertAbilityPatches.RestoreAnimController();
+            }
+        }
 
-            void Awake()
+        void Awake()
         {
             Instance = this;
 
@@ -164,6 +177,34 @@ namespace trickyclown
                 { "bmxGrindBoostTrick2Namecfg", Config.Bind("BMX Grind Tricks", "BMX Boost Trick 2 Name", "Backyard Grind",
                 "Button 3 boost trick name") }
             };
+
+            //CONTROLLER OVERRIDES
+            IdleOverrides["skateboardSwitchTrickcfgAnim"] = Config.Bind("Skateboard Grind Tricks", "Skateboard Switch Trick Override Anim", false, "Set to on-foot animator for switch trick").Value;
+            IdleOverrides["skateboardStartTrickcfgAnim"] = Config.Bind("Skateboard Grind Tricks", "Skateboard Start Trick Override Anim", false, "Set to on-foot animator for start trick").Value;
+            IdleOverrides["skateboardGrindTrick0cfgAnim"] = Config.Bind("Skateboard Grind Tricks", "Skateboard Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 trick").Value;
+            IdleOverrides["skateboardGrindTrick1cfgAnim"] = Config.Bind("Skateboard Grind Tricks", "Skateboard Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 trick").Value;
+            IdleOverrides["skateboardGrindTrick2cfgAnim"] = Config.Bind("Skateboard Grind Tricks", "Skateboard Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 trick").Value;
+            IdleOverrides["skateboardGrindBoostTrick0cfgAnim"] = Config.Bind("Skateboard Grind Tricks", "Skateboard Boost Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 boost trick").Value;
+            IdleOverrides["skateboardGrindBoostTrick1cfgAnim"] = Config.Bind("Skateboard Grind Tricks", "Skateboard Boost Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 boost trick").Value;
+            IdleOverrides["skateboardGrindBoostTrick2cfgAnim"] = Config.Bind("Skateboard Grind Tricks", "Skateboard Boost Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 boost trick").Value;
+
+            IdleOverrides["inlineSwitchTrickcfgAnim"] = Config.Bind("Inline Grind Tricks", "Inline Switch Trick Override Anim", false, "Set to on-foot animator for switch trick").Value;
+            IdleOverrides["inlineStartTrickcfgAnim"] = Config.Bind("Inline Grind Tricks", "Inline Start Trick Override Anim", false, "Set to on-foot animator for start trick").Value;
+            IdleOverrides["inlineGrindTrick0cfgAnim"] = Config.Bind("Inline Grind Tricks", "Inline Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 trick").Value;
+            IdleOverrides["inlineGrindTrick1cfgAnim"] = Config.Bind("Inline Grind Tricks", "Inline Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 trick").Value;
+            IdleOverrides["inlineGrindTrick2cfgAnim"] = Config.Bind("Inline Grind Tricks", "Inline Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 trick").Value;
+            IdleOverrides["inlineGrindBoostTrick0cfgAnim"] = Config.Bind("Inline Grind Tricks", "Inline Boost Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 boost trick").Value;
+            IdleOverrides["inlineGrindBoostTrick1cfgAnim"] = Config.Bind("Inline Grind Tricks", "Inline Boost Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 boost trick").Value;
+            IdleOverrides["inlineGrindBoostTrick2cfgAnim"] = Config.Bind("Inline Grind Tricks", "Inline Boost Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 boost trick").Value;
+
+            IdleOverrides["bmxSwitchTrickcfgAnim"] = Config.Bind("BMX Grind Tricks", "BMX Switch Trick Override Anim", false, "Set to on-foot animator for switch trick").Value;
+            IdleOverrides["bmxStartTrickcfgAnim"] = Config.Bind("BMX Grind Tricks", "BMX Start Trick Override Anim", false, "Set to on-foot animator for start trick").Value;
+            IdleOverrides["bmxGrindTrick0cfgAnim"] = Config.Bind("BMX Grind Tricks", "Bmx Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 trick").Value;
+            IdleOverrides["bmxGrindTrick1cfgAnim"] = Config.Bind("BMX Grind Tricks", "Bmx Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 trick").Value;
+            IdleOverrides["bmxGrindTrick2cfgAnim"] = Config.Bind("BMX Grind Tricks", "Bmx Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 trick").Value;
+            IdleOverrides["bmxGrindBoostTrick0cfgAnim"] = Config.Bind("BMX Grind Tricks", "Bmx Boost Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 boost trick").Value;
+            IdleOverrides["bmxGrindBoostTrick1cfgAnim"] = Config.Bind("BMX Grind Tricks", "Bmx Boost Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 boost trick").Value;
+            IdleOverrides["bmxGrindBoostTrick2cfgAnim"] = Config.Bind("BMX Grind Tricks", "Bmx Boost Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 boost trick").Value;
         }
 
         public string GetConfigValueGrind(string key)
@@ -249,18 +290,24 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["skateboardGrindBoostTrick0cfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueSkateboardGrindName5, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind5), true, false, 0f);
                 }
                 if (__instance.curTrick == 1)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["skateboardGrindBoostTrick1cfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueSkateboardGrindName6, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind6), true, false, 0f);
                 }
                 if (__instance.curTrick == 2)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["skateboardGrindBoostTrick2cfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueSkateboardGrindName7, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind7), true, false, 0f);
@@ -270,18 +317,24 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["inlineGrindBoostTrick0cfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueInlineGrindName5, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind5), true, false, 0f);
                 }
                 if (__instance.curTrick == 1)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["inlineGrindBoostTrick1cfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueInlineGrindName6, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind6), true, false, 0f);
                 }
                 if (__instance.curTrick == 2)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["inlineGrindBoostTrick2cfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueInlineGrindName7, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind7), true, false, 0f);
@@ -291,22 +344,36 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["bmxGrindBoostTrick0cfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueBMXGrindName5, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind5), true, false, 0f);
                 }
                 if (__instance.curTrick == 1)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["bmxGrindBoostTrick1cfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueBMXGrindName6, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind6), true, false, 0f);
                 }
                 if (__instance.curTrick == 2)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["bmxGrindBoostTrick2cfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, configValueBMXGrindName7, __instance.curTrick);
                     __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind7), true, false, 0f);
                 }
+            }
+
+            //MOVESTYLER FIX
+            if (VertAbilityPatches.nonVanillaMovestyle)
+            {
+                __instance.p.DoTrick(Player.TrickType.GRIND_BOOST, __instance.startTrickNames[3 + __instance.curTrick], __instance.curTrick);
+                __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
+                __instance.p.PlayAnim(__instance.grindBoostTrickHashes[__instance.curTrick], true, false, 0f);
             }
             return false;
         }
@@ -388,15 +455,26 @@ namespace trickyclown
                 }
                 else if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["skateboardSwitchTrickcfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind1), false, false, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.INLINE)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["inlineSwitchTrickcfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind1), false, false, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.BMX)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["bmxSwitchTrickcfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind1), false, false, -1f);
+                }
+                // MOVESTYLER FIX
+                else if (VertAbilityPatches.nonVanillaMovestyle)
+                {
+                    __instance.p.PlayAnim(__instance.switchToEquippedMovestyleGrindHash, false, false, -1f);
                 }
                 __instance.curTrick = 1;
                     return false;
@@ -417,18 +495,29 @@ namespace trickyclown
                 }
                 else if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["skateboardStartTrickcfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_START, configValueSkateboardGrindName5, __instance.curTrick);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind5), false, false, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.INLINE)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["inlineStartTrickcfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_START, configValueInlineGrindName5, __instance.curTrick);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind5), false, false, -1f);
                 }
                 else if (__instance.p.moveStyle == MoveStyle.BMX)
                 {
+                    CheckAnimOverride(GriTAPatchTC.IdleOverrides["bmxStartTrickcfgAnim"]);
+
                     __instance.p.DoTrick(Player.TrickType.GRIND_START, configValueBMXGrindName5, __instance.curTrick);
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind5), false, false, -1f);
+                }
+                // MOVESTYLER FIX
+                else if (VertAbilityPatches.nonVanillaMovestyle)
+                {
+                    __instance.p.PlayAnim(Animator.StringToHash("grindTrick3"), false, false, -1f);
                 }
             }
                 else
@@ -443,7 +532,7 @@ namespace trickyclown
                         }
                         else if (configValueFootGrind2 == null)
                         {
-                            Debug.LogError("Config value for footGrindBoostTrick0cfg is null!");
+                            Debug.LogError("Config value for footGrindTrick0cfg is null!");
                         }
 
                         if (__instance.curTrick == 1 && configValueFootGrind3 != null)
@@ -452,7 +541,7 @@ namespace trickyclown
                         }
                         else if (configValueFootGrind3 == null)
                         {
-                            Debug.LogError("Config value for footGrindBoostTrick1cfg is null!");
+                            Debug.LogError("Config value for footGrindTrick1cfg is null!");
                         }
 
                         if (__instance.curTrick == 2 && configValueFootGrind4 != null)
@@ -461,42 +550,50 @@ namespace trickyclown
                         }
                         else if (configValueFootGrind4 == null)
                         {
-                            Debug.LogError("Config value for footGrindBoostTrick2cfg is null!");
+                            Debug.LogError("Config value for footGrindTrick2cfg is null!");
                         }
                     }
                 else if (__instance.p.moveStyle == MoveStyle.INLINE)
                 {
                     if (__instance.curTrick == 0 && configValueInlineGrind2 != null)
                     {
+                        CheckAnimOverride(GriTAPatchTC.IdleOverrides["inlineGrindTrick0cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind2), true, false, 0f);
                     }
                     else if (configValueInlineGrind2 == null)
                     {
-                        Debug.LogError("Config value for inlineGrindBoostTrick0cfg is null!");
+                        Debug.LogError("Config value for inlineGrindTrick0cfg is null!");
                     }
 
                     if (__instance.curTrick == 1 && configValueInlineGrind3 != null)
                     {
+                        CheckAnimOverride(GriTAPatchTC.IdleOverrides["inlineGrindTrick1cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind3), true, false, 0f);
                     }
                     else if (configValueInlineGrind3 == null)
                     {
-                        Debug.LogError("Config value for inlineGrindBoostTrick1cfg is null!");
+                        Debug.LogError("Config value for inlineGrindTrick1cfg is null!");
                     }
 
                     if (__instance.curTrick == 2 && configValueInlineGrind4 != null)
                     {
+                        CheckAnimOverride(GriTAPatchTC.IdleOverrides["inlineGrindTrick2cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueInlineGrind4), true, false, 0f);
                     }
                     else if (configValueInlineGrind4 == null)
                     {
-                        Debug.LogError("Config value for inlineGrindBoostTrick2cfg is null!");
+                        Debug.LogError("Config value for inlineGrindTrick2cfg is null!");
                     }
                 }
                 else if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
                 {
                     if (__instance.curTrick == 0 && configValueSkateboardGrind2 != null)
                     {
+                        CheckAnimOverride(GriTAPatchTC.IdleOverrides["skateboardGrindTrick0cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind2), true, false, 0f);
                     }
                     else if (configValueSkateboardGrind2 == null)
@@ -506,6 +603,8 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueSkateboardGrind3 != null)
                     {
+                        CheckAnimOverride(GriTAPatchTC.IdleOverrides["skateboardGrindTrick1cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind3), true, false, 0f);
                     }
                     else if (configValueSkateboardGrind3 == null)
@@ -515,6 +614,8 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueSkateboardGrind4 != null)
                     {
+                        CheckAnimOverride(GriTAPatchTC.IdleOverrides["skateboardGrindTrick2cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueSkateboardGrind4), true, false, 0f);
                     }
                     else if (configValueSkateboardGrind4 == null)
@@ -526,6 +627,8 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0 && configValueBMXGrind2 != null)
                     {
+                        CheckAnimOverride(GriTAPatchTC.IdleOverrides["bmxGrindTrick0cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind2), true, false, 0f);
                     }
                     else if (configValueBMXGrind2 == null)
@@ -535,6 +638,8 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueBMXGrind3 != null)
                     {
+                        CheckAnimOverride(GriTAPatchTC.IdleOverrides["bmxGrindTrick1cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind3), true, false, 0f);
                     }
                     else if (configValueBMXGrind3 == null)
@@ -544,6 +649,8 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueBMXGrind4 != null)
                     {
+                        CheckAnimOverride(GriTAPatchTC.IdleOverrides["bmxGrindTrick2cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueBMXGrind4), true, false, 0f);
                     }
                     else if (configValueBMXGrind4 == null)
@@ -551,6 +658,8 @@ namespace trickyclown
                         Debug.LogError("Config value for bmxGrindBoostTrick2cfg is null!");
                     }
                 }
+
+                    //MOVESTYLER FIX
                 else
                     {
                         __instance.p.PlayAnim(__instance.grindTrickHashes[__instance.curTrick], true, false, 0f);

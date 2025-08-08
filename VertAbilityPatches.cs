@@ -7,7 +7,7 @@ using UnityEngine;
 namespace newtrickx
 {
     [HarmonyPatch(typeof(VertAbility))]
-    internal class VertAbilityPatches
+    internal class VertAbilityPatches2
     {
         [HarmonyPatch("StartTrick")]
         [HarmonyPrefix]
@@ -37,88 +37,111 @@ namespace newtrickx
             bool result;
             if (flag)
             {
-                __instance.p.PlayAnim(airTrickAbility.airBoostTrickHashes[airTrickAbility.curTrick], false, false, -1f);
-                bool flag0 = __instance.p.moveStyle == MoveStyle.SKATEBOARD;
-                if (flag0)
+
+                if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
                 {
-                    bool flag2 = airTrickAbility.curTrick == 0;
-                    if (flag2)
+                    if (airTrickAbility.curTrick == 0)
                     {
+                        ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirBoostTrick0cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirBoostTrick0), true, false, 0f);
+                        if (ATAPatchTC.IdleOverrides["skateboardAirBoostTrick0cfg"])
+                        { VertAbilityPatches.overridingIdle = true; }
+                        else
+                        { VertAbilityPatches.overridingIdle = false; }
                     }
-                    bool flag3 = airTrickAbility.curTrick == 1;
-                    if (flag3)
+                    else if (airTrickAbility.curTrick == 1)
                     {
+                        ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirBoostTrick1cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirBoostTrick1), true, false, 0f);
+                        if (ATAPatchTC.IdleOverrides["skateboardAirBoostTrick1cfg"])
+                        { VertAbilityPatches.overridingIdle = true; }
+                        else
+                        { VertAbilityPatches.overridingIdle = false; }
                     }
-                    bool flag3b = airTrickAbility.curTrick == 2;
-                    if (flag3b)
+                    else if (airTrickAbility.curTrick == 2)
                     {
+                        ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirBoostTrick2cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirBoostTrick2), true, false, 0f);
+                        if (ATAPatchTC.IdleOverrides["skateboardAirBoostTrick2cfg"])
+                        { VertAbilityPatches.overridingIdle = true; }
+                        else
+                        { VertAbilityPatches.overridingIdle = false; }
                     }
                 }
-                else
+                else if (__instance.p.moveStyle == MoveStyle.INLINE)
                 {
-                    bool flag4 = __instance.p.moveStyle == MoveStyle.INLINE;
-                    if (flag4)
+                    if (airTrickAbility.curTrick == 0)
                     {
-                        bool flag5 = airTrickAbility.curTrick == 0;
-                        if (flag5)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirBoostTrick0), true, false, 0f);
-                        }
-                        bool flag5a = airTrickAbility.curTrick == 1;
-                        if (flag5a)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirBoostTrick1), true, false, 0f);
-                        }
-                        bool flag6 = airTrickAbility.curTrick == 2;
-                        if (flag6)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirBoostTrick2), true, false, 0f);
-                        }
+                        ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirBoostTrick0cfgAnim"]);
+
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirBoostTrick0), true, false, 0f);
+                        if (ATAPatchTC.IdleOverrides["inlineAirBoostTrick0cfg"])
+                        { VertAbilityPatches.overridingIdle = true; }
+                        else
+                        { VertAbilityPatches.overridingIdle = false; }
+                    }
+                    else if (airTrickAbility.curTrick == 1)
+                    {
+                        ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirBoostTrick1cfgAnim"]);
+
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirBoostTrick1), true, false, 0f);
+                        if (ATAPatchTC.IdleOverrides["inlineAirBoostTrick1cfg"])
+                        { VertAbilityPatches.overridingIdle = true; }
+                        else
+                        { VertAbilityPatches.overridingIdle = false; }
+                    }
+                    else if (airTrickAbility.curTrick == 2)
+                    {
+                        ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirBoostTrick2cfgAnim"]);
+
+                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirBoostTrick2), true, false, 0f);
+                        if (ATAPatchTC.IdleOverrides["inlineAirBoostTrick2cfg"])
+                        { VertAbilityPatches.overridingIdle = true; }
+                        else
+                        { VertAbilityPatches.overridingIdle = false; }
                     }
                 }
-                bool flag7 = __instance.p.moveStyle == MoveStyle.BMX;
-                if (flag7)
+                else if (__instance.p.moveStyle == MoveStyle.BMX)
                 {
-                    bool flag8 = airTrickAbility.curTrick == 0;
-                    if (flag8)
+                    if (airTrickAbility.curTrick == 0)
                     {
+                        ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirBoostTrick0cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirBoostTrick0), true, false, 0f);
+                        if (ATAPatchTC.IdleOverrides["bmxAirBoostTrick0cfg"])
+                        { VertAbilityPatches.overridingIdle = true; }
+                        else
+                        { VertAbilityPatches.overridingIdle = false; }
                     }
-                    bool flag8a = airTrickAbility.curTrick == 1;
-                    if (flag8a)
+                    else if (airTrickAbility.curTrick == 1)
                     {
+                        ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirBoostTrick1cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirBoostTrick1), true, false, 0f);
+                        if (ATAPatchTC.IdleOverrides["bmxAirBoostTrick1cfg"])
+                        { VertAbilityPatches.overridingIdle = true; }
+                        else
+                        { VertAbilityPatches.overridingIdle = false; }
                     }
-                    bool flag9 = airTrickAbility.curTrick == 2;
-                    if (flag9)
+                    else if (airTrickAbility.curTrick == 2)
                     {
+                        ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirBoostTrick2cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirBoostTrick2), true, false, 0f);
+                        if (ATAPatchTC.IdleOverrides["bmxAirBoostTrick2cfg"])
+                        { VertAbilityPatches.overridingIdle = true; }
+                        else
+                        { VertAbilityPatches.overridingIdle = false; }
                     }
                 }
-                else
+
+                //MOVESTYLER FIX
+                if (VertAbilityPatches.nonVanillaMovestyle)
                 {
-                    bool flag10 = __instance.p.moveStyle == MoveStyle.ON_FOOT;
-                    if (flag10)
-                    {
-                        bool flag11 = airTrickAbility.curTrick == 0;
-                        if (flag11)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrick0), true, false, 0f);
-                        }
-                        bool flag12 = airTrickAbility.curTrick == 1;
-                        if (flag12)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrick1), true, false, 0f);
-                        }
-                        bool flag13 = airTrickAbility.curTrick == 2;
-                        if (flag13)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirBoostTrick2), true, false, 0f);
-                        }
-                    }
+                    __instance.p.PlayAnim(airTrickAbility.airBoostTrickHashes[airTrickAbility.curTrick], true, false, 0f);
                 }
                 __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);
                 __instance.trickScoreBuffered = true;
@@ -177,174 +200,214 @@ namespace newtrickx
                 else
                 {
                     __instance.p.PlayAnim(airTrickAbility.airTrickHashes[airTrickAbility.curTrick], true, false, 0f);
-                    bool flag5 = __instance.p.moveStyle == MoveStyle.ON_FOOT;
-                    if (flag5)
-                    {
-                        bool flag6 = airTrickAbility.curTrick == 0;
-                        if (flag6)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrick0), true, false, 0f);
-                        }
-                        bool flag6a = airTrickAbility.curTrick == 1;
-                        if (flag6a)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrick1), true, false, 0f);
-                        }
-                        bool flag6b = airTrickAbility.curTrick == 2;
-                        if (flag6b)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(footAirTrick2), true, false, 0f);
-                        }
-                    }
-                    bool flagB = __instance.p.moveStyle == MoveStyle.BMX;
-                    if (flagB)
-                    {
-                        bool flagB0 = airTrickAbility.curTrick == 0;
-                        if (flagB0)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirTrick0), true, false, 0f);
-                        }
-                        bool flagB1 = airTrickAbility.curTrick == 1;
-                        if (flagB1)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirTrick1), true, false, 0f);
-                        }
-                        bool flagB2 = airTrickAbility.curTrick == 2;
-                        if (flagB2)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirTrick2), true, false, 0f);
-                        }
-                    }
-                    bool flag7 = __instance.p.moveStyle == MoveStyle.INLINE;
-                    if (flag7)
-                    {
-                        bool flag8 = airTrickAbility.curTrick == 0;
-                        if (flag8)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirTrick0), true, false, -1f);
-                        }
-                        bool flag8a = airTrickAbility.curTrick == 1;
-                        if (flag8a)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirTrick1), true, false, -1f);
-                        }
-                        bool flag8b = airTrickAbility.curTrick == 2;
-                        if (flag8b)
-                        {
-                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirTrick2), true, false, -1f);
-                        }
-                    }
-                    bool flag9 = __instance.p.moveStyle == MoveStyle.SKATEBOARD;
-                    if (flag9)
-                    {
-                        bool flaga = airTrickAbility.curTrick == 0;
-                        bool flage = airTrickAbility.curTrick == 1;
-                        bool flagf = airTrickAbility.curTrick == 2;
 
-                        if (flaga)
+                    if (__instance.p.moveStyle == MoveStyle.BMX)
+                    {
+                        if (airTrickAbility.curTrick == 0)
+                        {
+                            ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirTrick0cfgAnim"]);
+
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirTrick0), true, false, 0f);
+                            if (ATAPatchTC.IdleOverrides["bmxAirTrick0cfg"])
+                            { VertAbilityPatches.overridingIdle = true; }
+                            else
+                            { VertAbilityPatches.overridingIdle = false; }
+                        }
+                        else if (airTrickAbility.curTrick == 1)
+                        {
+                            ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirTrick1cfgAnim"]);
+
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirTrick1), true, false, 0f);
+                            if (ATAPatchTC.IdleOverrides["bmxAirTrick1cfg"])
+                            { VertAbilityPatches.overridingIdle = true; }
+                            else
+                            { VertAbilityPatches.overridingIdle = false; }
+                        }
+                        else if (airTrickAbility.curTrick == 2)
+                        {
+                            ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirTrick2cfgAnim"]);
+
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(bmxAirTrick2), true, false, 0f);
+                            if (ATAPatchTC.IdleOverrides["bmxAirTrick2cfg"])
+                            { VertAbilityPatches.overridingIdle = true; }
+                            else
+                            { VertAbilityPatches.overridingIdle = false; }
+                        }
+                    }
+                    else if (__instance.p.moveStyle == MoveStyle.INLINE)
+                    {
+                        if (airTrickAbility.curTrick == 0)
+                        {
+                            ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirTrick0cfgAnim"]);
+
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirTrick0), true, false, -1f);
+                            if (ATAPatchTC.IdleOverrides["inlineAirTrick0cfg"])
+                            { VertAbilityPatches.overridingIdle = true; }
+                            else
+                            { VertAbilityPatches.overridingIdle = false; }
+                        }
+                        else if (airTrickAbility.curTrick == 1)
+                        {
+                            ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirTrick1cfgAnim"]);
+
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirTrick1), true, false, -1f);
+                            if (ATAPatchTC.IdleOverrides["inlineAirTrick1cfg"])
+                            { VertAbilityPatches.overridingIdle = true; }
+                            else
+                            { VertAbilityPatches.overridingIdle = false; }
+                        }
+                        else if (airTrickAbility.curTrick == 2)
+                        {
+                            ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirTrick2cfgAnim"]);
+
+                            __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(inlineAirTrick2), true, false, -1f);
+                            if (ATAPatchTC.IdleOverrides["inlineAirTrick2cfg"])
+                            { VertAbilityPatches.overridingIdle = true; }
+                            else
+                            { VertAbilityPatches.overridingIdle = false; }
+                        }
+                    }
+                    else if (__instance.p.moveStyle == MoveStyle.SKATEBOARD)
+                    {
+                        bool enableTonyCfg = ATAPatchTC.enableTonyCfg.Value;
+                        if (airTrickAbility.curTrick == 0)
                         {
                             float moveAxisX = __instance.p.moveAxisX;
                             float moveAxisY = __instance.p.moveAxisY;
-
-                            if (getTonyCfg)
+                            if (enableTonyCfg)
                             {
                                 if (moveAxisX <= -0.25f)
                                 {
-                                    if (moveAxisY <= -0.25f)
+                                    if (moveAxisY <= -0.25f || moveAxisY >= 0.25f)
                                     {
                                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
-                                    }
-                                    else if (moveAxisY >= 0.25f)
-                                    {
-                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
+                                        if (ATAPatchTC.IdleOverrides["skateboardAirTrick0cfg"])
+                                        { VertAbilityPatches.overridingIdle = true; }
+                                        else
+                                        { VertAbilityPatches.overridingIdle = false; }
                                     }
                                     else
-                                    {
                                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundTrick0"), true, false, -1f);
-                                    }
+                                    VertAbilityPatches.overridingIdle = false;
                                 }
                                 else if (moveAxisX >= 0.25f)
                                 {
-                                    if (moveAxisY <= -0.25f)
+                                    if (moveAxisY <= -0.25f || moveAxisY >= 0.25f)
                                     {
                                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
-                                    }
-                                    else if (moveAxisY >= 0.25f)
-                                    {
-                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
+                                        if (ATAPatchTC.IdleOverrides["skateboardAirTrick0cfg"])
+                                        { VertAbilityPatches.overridingIdle = true; }
+                                        else
+                                        { VertAbilityPatches.overridingIdle = false; }
                                     }
                                     else
-                                    {
                                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundTrick2"), true, false, -1f);
-                                    }
+                                    VertAbilityPatches.overridingIdle = false;
                                 }
                                 else if (moveAxisY <= -0.25f)
                                 {
                                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("grindTrick0"), true, false, -1f);
+                                    VertAbilityPatches.overridingIdle = false;
                                 }
                                 else if (moveAxisY >= 0.25f)
                                 {
                                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundTrick3"), true, false, -1f);
+                                    VertAbilityPatches.overridingIdle = false;
                                 }
-                                else
+                                else //NO TILT 0
                                 {
-                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
-                                }
-                            }
-                            else
-                            {
-                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
-                            }
+                                    ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirTrick0cfgAnim"]);
 
-                        }
-                        if (flage)
-                        {
-                            if (getTonyCfg)
-                            {
-                                if (__instance.p.slideButtonHeld)
-                                {
-                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundBoostTrick0"), false, false, -1f);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
+                                    if (ATAPatchTC.IdleOverrides["skateboardAirTrick0cfg"])
+                                    { VertAbilityPatches.overridingIdle = true; }
+                                    else
+                                    { VertAbilityPatches.overridingIdle = false; }
                                 }
+                            }
+                            else //NEUTRAL 0
+                            {
+                                ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirTrick0cfgAnim"]);
+
+                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick0), true, false, -1f);
+                                if (ATAPatchTC.IdleOverrides["skateboardAirTrick0cfg"])
+                                { VertAbilityPatches.overridingIdle = true; }
                                 else
-                                {
-                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick1), false, false, -1f);
-                                }
-                            }
-                            else
-                            {
-                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick1), false, false, -1f);
+                                { VertAbilityPatches.overridingIdle = false; }
                             }
                         }
-                        if (flagf)
+                        else if (airTrickAbility.curTrick == 1)
                         {
-                            if (getTonyCfg)
+                            if (enableTonyCfg && __instance.p.slideButtonHeld)
+                            {
+                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundBoostTrick0"), false, false, -1f);
+                                VertAbilityPatches.overridingIdle = false;
+                            }
+                            else //TRIANGLE NO SLIDE
+                            {
+                                ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirTrick1cfgAnim"]);
+
+                                __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick1), false, false, -1f);
+                                if (ATAPatchTC.IdleOverrides["skateboardAirTrick1cfg"])
+                                { VertAbilityPatches.overridingIdle = true; }
+                                else
+                                { VertAbilityPatches.overridingIdle = false; }
+                            }
+                        }
+                        else if (airTrickAbility.curTrick == 2)
+                        {
+                            if (enableTonyCfg)
                             {
                                 if (__instance.p.moveAxisX >= 0.25f)
                                 {
-                                    if (__instance.p.moveAxisY <= -0.25f)
+                                    if (__instance.p.moveAxisY <= -0.25f && BunchOfEmotesSupport.Installed)
                                     {
-                                        Console.WriteLine("EVEN FLOOOOOW");
-                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("airBoostTrick2"), false, false, -1f);
+                                        ATAPatchTC.CheckAnimOverride(true);
+                                        __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("christ air"), false, false, -1f);
+                                        VertAbilityPatches.overridingIdle = false;
                                     }
                                     else if (__instance.p.moveAxisY >= 0.25f)
                                     {
                                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick2), false, false, -1f);
+                                        if (ATAPatchTC.IdleOverrides["skateboardAirTrick1cfg"])
+                                        { VertAbilityPatches.overridingIdle = true; }
+                                        else
+                                        { VertAbilityPatches.overridingIdle = false; }
                                     }
                                     else
                                     {
                                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("airTrick1"), false, false, -1f);
+                                        VertAbilityPatches.overridingIdle = false;
                                     }
                                 }
-                                else
+                                else //2 NO TILT
                                 {
+                                    ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirTrick2cfgAnim"]);
+
                                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick2), false, false, -1f);
+                                    if (ATAPatchTC.IdleOverrides["skateboardAirTrick1cfg"])
+                                    { VertAbilityPatches.overridingIdle = true; }
+                                    else
+                                    { VertAbilityPatches.overridingIdle = false; }
                                 }
                             }
-                            else
+                            else //2 NEUTRAL
                             {
+                                ATAPatchTC.CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirTrick2cfgAnim"]);
+
                                 __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(skateboardAirTrick2), false, false, -1f);
+                                if (ATAPatchTC.IdleOverrides["skateboardAirTrick1cfg"])
+                                { VertAbilityPatches.overridingIdle = true; }
+                                else
+                                { VertAbilityPatches.overridingIdle = false; }
                             }
                         }
+                    }
+
+                    //MOVESTYLER FIX
+                    else if (VertAbilityPatches.nonVanillaMovestyle)
+                    {
+                        __instance.p.PlayAnim(airTrickAbility.airTrickHashes[airTrickAbility.curTrick], true, false, 0f);
                     }
                 }
                     __instance.trickScoreBuffered = true;

@@ -16,6 +16,20 @@ namespace trickyclown
 
         private Dictionary<string, ConfigEntry<string>> configEntriesGround;
 
+        public static Dictionary<string, bool> IdleOverrides = new Dictionary<string, bool>();
+
+        public static void CheckAnimOverride(bool overrideAnim)
+        {
+            if (overrideAnim)
+            {
+                VertAbilityPatches.UseFootController();
+            }
+            else
+            {
+                VertAbilityPatches.RestoreAnimController();
+            }
+        }
+
         private void Awake()
         {
             GTAPatchTC.Instance = this;
@@ -214,6 +228,27 @@ namespace trickyclown
                     base.Config.Bind<string>("On-foot Ground Tricks", "Foot Boost Trick 2 Name", "Coin Drop", "Button 3 boost trick name")
                 }
             };
+            //CONTROLLER OVERRIDES
+            IdleOverrides["skateboardGroundTrick0cfgAnim"] = Config.Bind("Skateboard Ground Tricks", "Skateboard Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 trick").Value;
+            IdleOverrides["skateboardGroundTrick1cfgAnim"] = Config.Bind("Skateboard Ground Tricks", "Skateboard Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 trick").Value;
+            IdleOverrides["skateboardGroundTrick2cfgAnim"] = Config.Bind("Skateboard Ground Tricks", "Skateboard Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 trick").Value;
+            IdleOverrides["skateboardGroundBoostTrick0cfgAnim"] = Config.Bind("Skateboard Ground Tricks", "Skateboard Boost Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 boost trick").Value;
+            IdleOverrides["skateboardGroundBoostTrick1cfgAnim"] = Config.Bind("Skateboard Ground Tricks", "Skateboard Boost Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 boost trick").Value;
+            IdleOverrides["skateboardGroundBoostTrick2cfgAnim"] = Config.Bind("Skateboard Ground Tricks", "Skateboard Boost Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 boost trick").Value;
+
+            IdleOverrides["inlineGroundTrick0cfgAnim"] = Config.Bind("Inline Ground Tricks", "Inline Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 trick").Value;
+            IdleOverrides["inlineGroundTrick1cfgAnim"] = Config.Bind("Inline Ground Tricks", "Inline Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 trick").Value;
+            IdleOverrides["inlineGroundTrick2cfgAnim"] = Config.Bind("Inline Ground Tricks", "Inline Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 trick").Value;
+            IdleOverrides["inlineGroundBoostTrick0cfgAnim"] = Config.Bind("Inline Ground Tricks", "Inline Boost Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 boost trick").Value;
+            IdleOverrides["inlineGroundBoostTrick1cfgAnim"] = Config.Bind("Inline Ground Tricks", "Inline Boost Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 boost trick").Value;
+            IdleOverrides["inlineGroundBoostTrick2cfgAnim"] = Config.Bind("Inline Ground Tricks", "Inline Boost Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 boost trick").Value;
+
+            IdleOverrides["bmxGroundTrick0cfgAnim"] = Config.Bind("BMX Ground Tricks", "Bmx Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 trick").Value;
+            IdleOverrides["bmxGroundTrick1cfgAnim"] = Config.Bind("BMX Ground Tricks", "Bmx Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 trick").Value;
+            IdleOverrides["bmxGroundTrick2cfgAnim"] = Config.Bind("BMX Ground Tricks", "Bmx Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 trick").Value;
+            IdleOverrides["bmxGroundBoostTrick0cfgAnim"] = Config.Bind("BMX Ground Tricks", "Bmx Boost Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 boost trick").Value;
+            IdleOverrides["bmxGroundBoostTrick1cfgAnim"] = Config.Bind("BMX Ground Tricks", "Bmx Boost Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 boost trick").Value;
+            IdleOverrides["bmxGroundBoostTrick2cfgAnim"] = Config.Bind("BMX Ground Tricks", "Bmx Boost Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 boost trick").Value;
         }
 
         public string GetConfigValueGround(string key)
@@ -343,6 +378,8 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0 && configValueGround != null)
                 {
+                    CheckAnimOverride(GTAPatchTC.IdleOverrides["skateboardGroundBoostTrick0cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround), true, false, 0f);
                 }
                 else if (configValueGround == null)
@@ -352,6 +389,8 @@ namespace trickyclown
 
                 if (__instance.curTrick == 1 && configValueGround2 != null)
                 {
+                    CheckAnimOverride(GTAPatchTC.IdleOverrides["skateboardGroundBoostTrick1cfgAnim"]);
+ 
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround2), true, false, 0f);
                 }
                 else if (configValueGround2 == null)
@@ -361,6 +400,8 @@ namespace trickyclown
 
                 if (__instance.curTrick == 2 && configValueGround3 != null)
                 {
+                    CheckAnimOverride(GTAPatchTC.IdleOverrides["skateboardGroundBoostTrick2cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround3), true, false, 0f);
                 }
                 else if (configValueGround3 == null)
@@ -372,6 +413,8 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0 && configValueGround4 != null)
                 {
+                    CheckAnimOverride(GTAPatchTC.IdleOverrides["inlineGroundBoostTrick0cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround4), true, false, 0f);
                 }
                 else if (configValueGround4 == null)
@@ -381,6 +424,8 @@ namespace trickyclown
 
                 if (__instance.curTrick == 1 && configValueGround5 != null)
                 {
+                    CheckAnimOverride(GTAPatchTC.IdleOverrides["inlineGroundBoostTrick1cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround5), true, false, 0f);
                 }
                 else if (configValueGround5 == null)
@@ -390,6 +435,8 @@ namespace trickyclown
 
                 if (__instance.curTrick == 2 && configValueGround6 != null)
                 {
+                    CheckAnimOverride(GTAPatchTC.IdleOverrides["inlineGroundBoostTrick2cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround6), true, false, 0f);
                 }
                 else if (configValueGround6 == null)
@@ -401,6 +448,8 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0 && configValueGround7 != null)
                 {
+                    CheckAnimOverride(GTAPatchTC.IdleOverrides["bmxGroundBoostTrick0cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround7), true, false, 0f);
                 }
                 else if (configValueGround7 == null)
@@ -410,6 +459,8 @@ namespace trickyclown
 
                 if (__instance.curTrick == 1 && configValueGround8 != null)
                 {
+                    CheckAnimOverride(GTAPatchTC.IdleOverrides["bmxGroundBoostTrick1cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround8), true, false, 0f);
                 }
                 else if (configValueGround8 == null)
@@ -419,6 +470,8 @@ namespace trickyclown
 
                 if (__instance.curTrick == 2 && configValueGround9 != null)
                 {
+                    CheckAnimOverride(GTAPatchTC.IdleOverrides["bmxGroundBoostTrick2cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround9), true, false, 0f);
                 }
                 else if (configValueGround9 == null)
@@ -454,6 +507,11 @@ namespace trickyclown
                 {
                     Debug.LogError("Config value for footGroundBoostTrick2cfg is null!");
                 }
+            }
+            //MOVESTYLER FIX
+            else if (VertAbilityPatches.nonVanillaMovestyle)
+            {
+                __instance.p.PlayAnim(__instance.groundBoostTrickHashes[__instance.curTrick], true, false, 0f);
             }
 
             __instance.boostTrick = true;
@@ -537,6 +595,8 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0 && configValueGround != null)
                     {
+                        CheckAnimOverride(GTAPatchTC.IdleOverrides["skateboardGroundTrick0cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround), true, false, 0f);
                     }
                     else if (configValueGround == null)
@@ -546,6 +606,8 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueGround2 != null)
                     {
+                        CheckAnimOverride(GTAPatchTC.IdleOverrides["skateboardGroundTrick1cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround2), true, false, 0f);
                     }
                     else if (configValueGround2 == null)
@@ -555,6 +617,8 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueGround3 != null)
                     {
+                        CheckAnimOverride(GTAPatchTC.IdleOverrides["skateboardGroundTrick2cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround3), true, false, 0f);
                     }
                     else if (configValueGround3 == null)
@@ -566,6 +630,8 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0 && configValueGround4 != null)
                     {
+                        CheckAnimOverride(GTAPatchTC.IdleOverrides["inlineGroundTrick0cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround4), true, false, 0f);
                     }
                     else if (configValueGround4 == null)
@@ -575,6 +641,8 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueGround5 != null)
                     {
+                        CheckAnimOverride(GTAPatchTC.IdleOverrides["inlineGroundTrick1cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround5), true, false, 0f);
                     }
                     else if (configValueGround5 == null)
@@ -584,6 +652,8 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueGround6 != null)
                     {
+                        CheckAnimOverride(GTAPatchTC.IdleOverrides["inlineGroundTrick2cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround6), true, false, 0f);
                     }
                     else if (configValueGround6 == null)
@@ -595,6 +665,8 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0 && configValueGround7 != null)
                     {
+                        CheckAnimOverride(GTAPatchTC.IdleOverrides["bmxGroundTrick0cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround7), true, false, 0f);
                     }
                     else if (configValueGround7 == null)
@@ -604,6 +676,8 @@ namespace trickyclown
 
                     if (__instance.curTrick == 1 && configValueGround8 != null)
                     {
+                        CheckAnimOverride(GTAPatchTC.IdleOverrides["bmxGroundTrick1cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround8), true, false, 0f);
                     }
                     else if (configValueGround8 == null)
@@ -613,6 +687,8 @@ namespace trickyclown
 
                     if (__instance.curTrick == 2 && configValueGround9 != null)
                     {
+                        CheckAnimOverride(GTAPatchTC.IdleOverrides["bmxGroundTrick2cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueGround9), true, false, 0f);
                     }
                     else if (configValueGround9 == null)
@@ -648,6 +724,11 @@ namespace trickyclown
                     {
                         Debug.LogError("Config value for footGroundBoostTrick2cfg is null!");
                     }
+                }
+                //MOVESTYLER FIX
+                else if (VertAbilityPatches.nonVanillaMovestyle)
+                {
+                    __instance.p.PlayAnim(__instance.groundTrickHashes[__instance.curTrick], true, false, 0f);
                 }
             }
             __instance.p.hitboxLeftLeg.SetActive(false);

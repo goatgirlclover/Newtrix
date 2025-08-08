@@ -16,71 +16,100 @@ namespace trickyclown
 
         public static Dictionary<string, bool> IdleOverrides = new Dictionary<string, bool>();
 
+        public static void CheckAnimOverride(bool overrideAnim)
+        {
+            if (overrideAnim)
+            {
+                VertAbilityPatches.UseFootController();
+            }
+        }
+
         private void Awake()
         {
-            IdleOverrides["skateboardAirTrick0cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Trick 0 Fall Override", false, "Override fall for Button 1 trick (FALL OVERRIDES REQUIRE GAME RESTART TO TAKE EFFECT)").Value;
-            IdleOverrides["skateboardAirTrick1cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Trick 1 Fall Override", false, "Override fall for Button 2 trick").Value;
-            IdleOverrides["skateboardAirTrick2cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Trick 2 Fall Override", false, "Override fall for Button 3 trick").Value;
-            IdleOverrides["skateboardAirBoostTrick0cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Boost Trick 0 Fall Override", false, "Override fall for Button 1 boost trick").Value;
-            IdleOverrides["skateboardAirBoostTrick1cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Boost Trick 1 Fall Override", false, "Override fall for Button 2 boost trick").Value;
-            IdleOverrides["skateboardAirBoostTrick2cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Boost Trick 2 Fall Override", false, "Override fall for Button 3 boost trick").Value;
+            IdleOverrides["skateboardAirTrick0cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Trick 0 Override Fall", false, "Override fall for Button 1 trick (OVERRIDES REQUIRE GAME RESTART TO TAKE EFFECT)").Value;
+            IdleOverrides["skateboardAirTrick1cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Trick 1 Override Fall", false, "Override fall for Button 2 trick").Value;
+            IdleOverrides["skateboardAirTrick2cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Trick 2 Override Fall", false, "Override fall for Button 3 trick").Value;
+            IdleOverrides["skateboardAirBoostTrick0cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Boost Trick 0 Override Fall", false, "Override fall for Button 1 boost trick").Value;
+            IdleOverrides["skateboardAirBoostTrick1cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Boost Trick 1 Override Fall", false, "Override fall for Button 2 boost trick").Value;
+            IdleOverrides["skateboardAirBoostTrick2cfg"] = Config.Bind("Skateboard Air Tricks", "Skateboard Boost Trick 2 Override Fall", false, "Override fall for Button 3 boost trick").Value;
 
-            IdleOverrides["inlineAirTrick0cfg"] = Config.Bind("Inline Air Tricks", "Inline Trick 0 Fall Override", false, "Override fall for Button 1 trick (FALL OVERRIDES REQUIRE GAME RESTART TO TAKE EFFECT)").Value;
-            IdleOverrides["inlineAirTrick1cfg"] = Config.Bind("Inline Air Tricks", "Inline Trick 1 Fall Override", false, "Override fall for Button 2 trick").Value;
-            IdleOverrides["inlineAirTrick2cfg"] = Config.Bind("Inline Air Tricks", "Inline Trick 2 Fall Override", false, "Override fall for Button 3 trick").Value;
-            IdleOverrides["inlineAirBoostTrick0cfg"] = Config.Bind("Inline Air Tricks", "Inline Boost Trick 0 Fall Override", false, "Override fall for Button 1 boost trick").Value;
-            IdleOverrides["inlineAirBoostTrick1cfg"] = Config.Bind("Inline Air Tricks", "Inline Boost Trick 1 Fall Override", false, "Override fall for Button 2 boost trick").Value;
-            IdleOverrides["inlineAirBoostTrick2cfg"] = Config.Bind("Inline Air Tricks", "Inline Boost Trick 2 Fall Override", false, "Override fall for Button 3 boost trick").Value;
+            IdleOverrides["inlineAirTrick0cfg"] = Config.Bind("Inline Air Tricks", "Inline Trick 0 Override Fall", false, "Override fall for Button 1 trick (OVERRIDES REQUIRE GAME RESTART TO TAKE EFFECT)").Value;
+            IdleOverrides["inlineAirTrick1cfg"] = Config.Bind("Inline Air Tricks", "Inline Trick 1 Override Fall", false, "Override fall for Button 2 trick").Value;
+            IdleOverrides["inlineAirTrick2cfg"] = Config.Bind("Inline Air Tricks", "Inline Trick 2 Override Fall", false, "Override fall for Button 3 trick").Value;
+            IdleOverrides["inlineAirBoostTrick0cfg"] = Config.Bind("Inline Air Tricks", "Inline Boost Trick 0 Override Fall", false, "Override fall for Button 1 boost trick").Value;
+            IdleOverrides["inlineAirBoostTrick1cfg"] = Config.Bind("Inline Air Tricks", "Inline Boost Trick 1 Override Fall", false, "Override fall for Button 2 boost trick").Value;
+            IdleOverrides["inlineAirBoostTrick2cfg"] = Config.Bind("Inline Air Tricks", "Inline Boost Trick 2 Override Fall", false, "Override fall for Button 3 boost trick").Value;
 
-            IdleOverrides["bmxAirTrick0cfg"] = Config.Bind("BMX Air Tricks", "Bmx Trick 0 Fall Override", false, "Override fall for Button 1 trick (FALL OVERRIDES REQUIRE GAME RESTART TO TAKE EFFECT)").Value;
-            IdleOverrides["bmxAirTrick1cfg"] = Config.Bind("BMX Air Tricks", "Bmx Trick 1 Fall Override", false, "Override fall for Button 2 trick").Value;
-            IdleOverrides["bmxAirTrick2cfg"] = Config.Bind("BMX Air Tricks", "Bmx Trick 2 Fall Override", false, "Override fall for Button 3 trick").Value;
-            IdleOverrides["bmxAirBoostTrick0cfg"] = Config.Bind("BMX Air Tricks", "Bmx Boost Trick 0 Fall Override", false, "Override fall for Button 1 boost trick").Value;
-            IdleOverrides["bmxAirBoostTrick1cfg"] = Config.Bind("BMX Air Tricks", "Bmx Boost Trick 1 Fall Override", false, "Override fall for Button 2 boost trick").Value;
-            IdleOverrides["bmxAirBoostTrick2cfg"] = Config.Bind("BMX Air Tricks", "Bmx Boost Trick 2 Fall Override", false, "Override fall for Button 3 boost trick").Value;
+            IdleOverrides["bmxAirTrick0cfg"] = Config.Bind("BMX Air Tricks", "Bmx Trick 0 Override Fall", false, "Override fall for Button 1 trick (OVERRIDES REQUIRE GAME RESTART TO TAKE EFFECT)").Value;
+            IdleOverrides["bmxAirTrick1cfg"] = Config.Bind("BMX Air Tricks", "Bmx Trick 1 Override Fall", false, "Override fall for Button 2 trick").Value;
+            IdleOverrides["bmxAirTrick2cfg"] = Config.Bind("BMX Air Tricks", "Bmx Trick 2 Override Fall", false, "Override fall for Button 3 trick").Value;
+            IdleOverrides["bmxAirBoostTrick0cfg"] = Config.Bind("BMX Air Tricks", "Bmx Boost Trick 0 Override Fall", false, "Override fall for Button 1 boost trick").Value;
+            IdleOverrides["bmxAirBoostTrick1cfg"] = Config.Bind("BMX Air Tricks", "Bmx Boost Trick 1 Override Fall", false, "Override fall for Button 2 boost trick").Value;
+            IdleOverrides["bmxAirBoostTrick2cfg"] = Config.Bind("BMX Air Tricks", "Bmx Boost Trick 2 Override Fall", false, "Override fall for Button 3 boost trick").Value;
 
-            IdleOverrides["footAirTrick0cfg"] = Config.Bind("On-foot Air Tricks", "Foot Trick 0 Fall Override", false, "Override fall for Button 1 trick (FALL OVERRIDES REQUIRE GAME RESTART TO TAKE EFFECT)").Value;
-            IdleOverrides["footAirTrick1cfg"] = Config.Bind("On-foot Air Tricks", "Foot Trick 1 Fall Override", false, "Override fall for Button 2 trick").Value;
-            IdleOverrides["footAirTrick2cfg"] = Config.Bind("On-foot Air Tricks", "Foot Trick 2 Fall Override", false, "Override fall for Button 3 trick").Value;
-            IdleOverrides["footAirBoostTrick0cfg"] = Config.Bind("On-foot Air Tricks", "Foot Boost Trick 0 Fall Override", false, "Override fall for Button 1 boost trick").Value;
-            IdleOverrides["footAirBoostTrick1cfg"] = Config.Bind("On-foot Air Tricks", "Foot Boost Trick 1 Fall Override", false, "Override fall for Button 2 boost trick").Value;
-            IdleOverrides["footAirBoostTrick2cfg"] = Config.Bind("On-foot Air Tricks", "Foot Boost Trick 2 Fall Override", false, "Override fall for Button 3 boost trick").Value;
+            IdleOverrides["footAirTrick0cfg"] = Config.Bind("On-foot Air Tricks", "Foot Trick 0 Override Fall", false, "Override fall for Button 1 trick (OVERRIDES REQUIRE GAME RESTART TO TAKE EFFECT)").Value;
+            IdleOverrides["footAirTrick1cfg"] = Config.Bind("On-foot Air Tricks", "Foot Trick 1 Override Fall", false, "Override fall for Button 2 trick").Value;
+            IdleOverrides["footAirTrick2cfg"] = Config.Bind("On-foot Air Tricks", "Foot Trick 2 Override Fall", false, "Override fall for Button 3 trick").Value;
+            IdleOverrides["footAirBoostTrick0cfg"] = Config.Bind("On-foot Air Tricks", "Foot Boost Trick 0 Override Fall", false, "Override fall for Button 1 boost trick").Value;
+            IdleOverrides["footAirBoostTrick1cfg"] = Config.Bind("On-foot Air Tricks", "Foot Boost Trick 1 Override Fall", false, "Override fall for Button 2 boost trick").Value;
+            IdleOverrides["footAirBoostTrick2cfg"] = Config.Bind("On-foot Air Tricks", "Foot Boost Trick 2 Override Fall", false, "Override fall for Button 3 boost trick").Value;
 
             //Left
-            IdleOverrides["footAirTrickLeft0cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot TrickLeft 0 Fall Override", false, "Override fall for Button 1 TrickLeft").Value;
-            IdleOverrides["footAirTrickLeft1cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot TrickLeft 1 Fall Override", false, "Override fall for Button 2 TrickLeft").Value;
-            IdleOverrides["footAirTrickLeft2cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot TrickLeft 2 Fall Override", false, "Override fall for Button 3 TrickLeft").Value;
-            IdleOverrides["footAirBoostTrickLeft0cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot Boost TrickLeft 0 Fall Override", false, "Override fall for Button 1 boost TrickLeft").Value;
-            IdleOverrides["footAirBoostTrickLeft1cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot Boost TrickLeft 1 Fall Override", false, "Override fall for Button 2 boost TrickLeft").Value;
-            IdleOverrides["footAirBoostTrickLeft2cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot Boost TrickLeft 2 Fall Override", false, "Override fall for Button 3 boost TrickLeft").Value;
+            IdleOverrides["footAirTrickLeft0cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot TrickLeft 0 Override Fall", false, "Override fall for Button 1 TrickLeft").Value;
+            IdleOverrides["footAirTrickLeft1cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot TrickLeft 1 Override Fall", false, "Override fall for Button 2 TrickLeft").Value;
+            IdleOverrides["footAirTrickLeft2cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot TrickLeft 2 Override Fall", false, "Override fall for Button 3 TrickLeft").Value;
+            IdleOverrides["footAirBoostTrickLeft0cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot Boost TrickLeft 0 Override Fall", false, "Override fall for Button 1 boost TrickLeft").Value;
+            IdleOverrides["footAirBoostTrickLeft1cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot Boost TrickLeft 1 Override Fall", false, "Override fall for Button 2 boost TrickLeft").Value;
+            IdleOverrides["footAirBoostTrickLeft2cfg"] = Config.Bind("On-foot Left Air Tricks", "Foot Boost TrickLeft 2 Override Fall", false, "Override fall for Button 3 boost TrickLeft").Value;
 
             //Right
-            IdleOverrides["footAirTrickRight0cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot TrickRight 0 Fall Override", false, "Override fall for Button 1 TrickRight").Value;
-            IdleOverrides["footAirTrickRight1cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot TrickRight 1 Fall Override", false, "Override fall for Button 2 TrickRight").Value;
-            IdleOverrides["footAirTrickRight2cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot TrickRight 2 Fall Override", false, "Override fall for Button 3 TrickRight").Value;
-            IdleOverrides["footAirBoostTrickRight0cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot Boost TrickRight 0 Fall Override", false, "Override fall for Button 1 boost TrickRight").Value;
-            IdleOverrides["footAirBoostTrickRight1cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot Boost TrickRight 1 Fall Override", false, "Override fall for Button 2 boost TrickRight").Value;
-            IdleOverrides["footAirBoostTrickRight2cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot Boost TrickRight 2 Fall Override", false, "Override fall for Button 3 boost TrickRight").Value;
+            IdleOverrides["footAirTrickRight0cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot TrickRight 0 Override Fall", false, "Override fall for Button 1 TrickRight").Value;
+            IdleOverrides["footAirTrickRight1cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot TrickRight 1 Override Fall", false, "Override fall for Button 2 TrickRight").Value;
+            IdleOverrides["footAirTrickRight2cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot TrickRight 2 Override Fall", false, "Override fall for Button 3 TrickRight").Value;
+            IdleOverrides["footAirBoostTrickRight0cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot Boost TrickRight 0 Override Fall", false, "Override fall for Button 1 boost TrickRight").Value;
+            IdleOverrides["footAirBoostTrickRight1cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot Boost TrickRight 1 Override Fall", false, "Override fall for Button 2 boost TrickRight").Value;
+            IdleOverrides["footAirBoostTrickRight2cfg"] = Config.Bind("On-foot Right Air Tricks", "Foot Boost TrickRight 2 Override Fall", false, "Override fall for Button 3 boost TrickRight").Value;
 
             //Up
-            IdleOverrides["footAirTrickUp0cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot TrickUp 0 Fall Override", false, "Override fall for Button 1 TrickUp").Value;
-            IdleOverrides["footAirTrickUp1cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot TrickUp 1 Fall Override", false, "Override fall for Button 2 TrickUp").Value;
-            IdleOverrides["footAirTrickUp2cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot TrickUp 2 Fall Override", false, "Override fall for Button 3 TrickUp").Value;
-            IdleOverrides["footAirBoostTrickUp0cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot Boost TrickUp 0 Fall Override", false, "Override fall for Button 1 boost TrickUp").Value;
-            IdleOverrides["footAirBoostTrickUp1cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot Boost TrickUp 1 Fall Override", false, "Override fall for Button 2 boost TrickUp").Value;
-            IdleOverrides["footAirBoostTrickUp2cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot Boost TrickUp 2 Fall Override", false, "Override fall for Button 3 boost TrickUp").Value;
+            IdleOverrides["footAirTrickUp0cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot TrickUp 0 Override Fall", false, "Override fall for Button 1 TrickUp").Value;
+            IdleOverrides["footAirTrickUp1cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot TrickUp 1 Override Fall", false, "Override fall for Button 2 TrickUp").Value;
+            IdleOverrides["footAirTrickUp2cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot TrickUp 2 Override Fall", false, "Override fall for Button 3 TrickUp").Value;
+            IdleOverrides["footAirBoostTrickUp0cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot Boost TrickUp 0 Override Fall", false, "Override fall for Button 1 boost TrickUp").Value;
+            IdleOverrides["footAirBoostTrickUp1cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot Boost TrickUp 1 Override Fall", false, "Override fall for Button 2 boost TrickUp").Value;
+            IdleOverrides["footAirBoostTrickUp2cfg"] = Config.Bind("On-foot Up Air Tricks", "Foot Boost TrickUp 2 Override Fall", false, "Override fall for Button 3 boost TrickUp").Value;
 
             //Down
-            IdleOverrides["footAirTrickDown0cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot TrickDown 0 Fall Override", false, "Override fall for Button 1 TrickDown").Value;
-            IdleOverrides["footAirTrickDown1cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot TrickDown 1 Fall Override", false, "Override fall for Button 2 TrickDown").Value;
-            IdleOverrides["footAirTrickDown2cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot TrickDown 2 Fall Override", false, "Override fall for Button 3 TrickDown").Value;
-            IdleOverrides["footAirBoostTrickDown0cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot Boost TrickDown 0 Fall Override", false, "Override fall for Button 1 boost TrickDown").Value;
-            IdleOverrides["footAirBoostTrickDown1cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot Boost TrickDown 1 Fall Override", false, "Override fall for Button 2 boost TrickDown").Value;
-            IdleOverrides["footAirBoostTrickDown2cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot Boost TrickDown 2 Fall Override", false, "Override fall for Button 3 boost TrickDown").Value;
-        
+            IdleOverrides["footAirTrickDown0cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot TrickDown 0 Override Fall", false, "Override fall for Button 1 TrickDown").Value;
+            IdleOverrides["footAirTrickDown1cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot TrickDown 1 Override Fall", false, "Override fall for Button 2 TrickDown").Value;
+            IdleOverrides["footAirTrickDown2cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot TrickDown 2 Override Fall", false, "Override fall for Button 3 TrickDown").Value;
+            IdleOverrides["footAirBoostTrickDown0cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot Boost TrickDown 0 Override Fall", false, "Override fall for Button 1 boost TrickDown").Value;
+            IdleOverrides["footAirBoostTrickDown1cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot Boost TrickDown 1 Override Fall", false, "Override fall for Button 2 boost TrickDown").Value;
+            IdleOverrides["footAirBoostTrickDown2cfg"] = Config.Bind("On-foot Down Air Tricks", "Foot Boost TrickDown 2 Override Fall", false, "Override fall for Button 3 boost TrickDown").Value;
+
+            //CONTROLLER OVERRIDES
+            IdleOverrides["skateboardAirTrick0cfgAnim"] = Config.Bind("Skateboard Air Tricks", "Skateboard Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 trick").Value;
+            IdleOverrides["skateboardAirTrick1cfgAnim"] = Config.Bind("Skateboard Air Tricks", "Skateboard Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 trick").Value;
+            IdleOverrides["skateboardAirTrick2cfgAnim"] = Config.Bind("Skateboard Air Tricks", "Skateboard Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 trick").Value;
+            IdleOverrides["skateboardAirBoostTrick0cfgAnim"] = Config.Bind("Skateboard Air Tricks", "Skateboard Boost Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 boost trick").Value;
+            IdleOverrides["skateboardAirBoostTrick1cfgAnim"] = Config.Bind("Skateboard Air Tricks", "Skateboard Boost Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 boost trick").Value;
+            IdleOverrides["skateboardAirBoostTrick2cfgAnim"] = Config.Bind("Skateboard Air Tricks", "Skateboard Boost Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 boost trick").Value;
+
+            IdleOverrides["inlineAirTrick0cfgAnim"] = Config.Bind("Inline Air Tricks", "Inline Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 trick").Value;
+            IdleOverrides["inlineAirTrick1cfgAnim"] = Config.Bind("Inline Air Tricks", "Inline Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 trick").Value;
+            IdleOverrides["inlineAirTrick2cfgAnim"] = Config.Bind("Inline Air Tricks", "Inline Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 trick").Value;
+            IdleOverrides["inlineAirBoostTrick0cfgAnim"] = Config.Bind("Inline Air Tricks", "Inline Boost Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 boost trick").Value;
+            IdleOverrides["inlineAirBoostTrick1cfgAnim"] = Config.Bind("Inline Air Tricks", "Inline Boost Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 boost trick").Value;
+            IdleOverrides["inlineAirBoostTrick2cfgAnim"] = Config.Bind("Inline Air Tricks", "Inline Boost Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 boost trick").Value;
+
+            IdleOverrides["bmxAirTrick0cfgAnim"] = Config.Bind("BMX Air Tricks", "Bmx Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 trick").Value;
+            IdleOverrides["bmxAirTrick1cfgAnim"] = Config.Bind("BMX Air Tricks", "Bmx Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 trick").Value;
+            IdleOverrides["bmxAirTrick2cfgAnim"] = Config.Bind("BMX Air Tricks", "Bmx Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 trick").Value;
+            IdleOverrides["bmxAirBoostTrick0cfgAnim"] = Config.Bind("BMX Air Tricks", "Bmx Boost Trick 0 Override Anim", false, "Set to on-foot animator for Button 1 boost trick").Value;
+            IdleOverrides["bmxAirBoostTrick1cfgAnim"] = Config.Bind("BMX Air Tricks", "Bmx Boost Trick 1 Override Anim", false, "Set to on-foot animator for Button 2 boost trick").Value;
+            IdleOverrides["bmxAirBoostTrick2cfgAnim"] = Config.Bind("BMX Air Tricks", "Bmx Boost Trick 2 Override Anim", false, "Set to on-foot animator for Button 3 boost trick").Value;
 
 
-        ATAPatchTC.enableTonyCfg = base.Config.Bind<bool>("General", "enableTonyCfg", false, "Enable Beta Skateboard Directional Tricks");
+            ATAPatchTC.enableTonyCfg = base.Config.Bind<bool>("General", "enableTonyCfg", false, "Enable Beta Skateboard Directional Tricks");
             ATAPatchTC.Instance = this;
             this.configEntriesAir = new Dictionary<string, ConfigEntry<string>>
             {
@@ -791,6 +820,8 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0)
                     {
+                        CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirTrick0cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir7), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["bmxAirTrick0cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
@@ -799,6 +830,8 @@ namespace trickyclown
                     }
                     else if (__instance.curTrick == 1)
                     {
+                        CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirTrick1cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir8), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["bmxAirTrick1cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
@@ -807,6 +840,8 @@ namespace trickyclown
                     }
                     else if (__instance.curTrick == 2)
                     {
+                        CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirTrick2cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir9), true, false, 0f);
                         if (ATAPatchTC.IdleOverrides["bmxAirTrick2cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
@@ -818,6 +853,8 @@ namespace trickyclown
                 {
                     if (__instance.curTrick == 0)
                     {
+                        CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirTrick0cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir4), true, false, -1f);
                         if (ATAPatchTC.IdleOverrides["inlineAirTrick0cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
@@ -826,6 +863,8 @@ namespace trickyclown
                     }
                     else if (__instance.curTrick == 1)
                     {
+                        CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirTrick1cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir5), true, false, -1f);
                         if (ATAPatchTC.IdleOverrides["inlineAirTrick1cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
@@ -834,6 +873,8 @@ namespace trickyclown
                     }
                     else if (__instance.curTrick == 2)
                     {
+                        CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirTrick2cfgAnim"]);
+
                         __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir6), true, false, -1f);
                         if (ATAPatchTC.IdleOverrides["inlineAirTrick2cfg"])
                         { VertAbilityPatches.overridingIdle = true; }
@@ -888,8 +929,10 @@ namespace trickyclown
                                 __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundTrick3"), true, false, -1f);
                                 VertAbilityPatches.overridingIdle = false;
                             }
-                            else
+                            else //NO TILT 0
                             {
+                                CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirTrick0cfgAnim"]);
+
                                 __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir), true, false, -1f);
                                 if (ATAPatchTC.IdleOverrides["skateboardAirTrick0cfg"])
                                 { VertAbilityPatches.overridingIdle = true; }
@@ -897,8 +940,10 @@ namespace trickyclown
                                 { VertAbilityPatches.overridingIdle = false; }
                             }
                         }
-                        else
+                        else //NEUTRAL 0
                         {
+                            CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirTrick0cfgAnim"]);
+
                             __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir), true, false, -1f);
                             if (ATAPatchTC.IdleOverrides["skateboardAirTrick0cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
@@ -913,8 +958,10 @@ namespace trickyclown
                             __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("groundBoostTrick0"), false, false, -1f);
                             VertAbilityPatches.overridingIdle = false;
                         }
-                        else
+                        else //TRIANGLE NO SLIDE
                         {
+                            CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirTrick1cfgAnim"]);
+
                             __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir2), false, false, -1f);
                             if (ATAPatchTC.IdleOverrides["skateboardAirTrick1cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
@@ -928,9 +975,10 @@ namespace trickyclown
                         {
                             if (__instance.p.moveAxisX >= 0.25f)
                             {
-                                if (__instance.p.moveAxisY <= -0.25f)
+                                if (__instance.p.moveAxisY <= -0.25f && BunchOfEmotesSupport.Installed)
                                 {
-                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("airBoostTrick2"), false, false, -1f);
+                                    CheckAnimOverride(true);
+                                    __instance.p.PlayAnim(AnimationUtility.GetAnimationByName("christ air"), false, false, -1f);
                                     VertAbilityPatches.overridingIdle = false;
                                 }
                                 else if (__instance.p.moveAxisY >= 0.25f)
@@ -947,8 +995,10 @@ namespace trickyclown
                                     VertAbilityPatches.overridingIdle = false;
                                 }
                             }
-                            else
+                            else //2 NO TILT
                             {
+                                CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirTrick2cfgAnim"]);
+
                                 __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir3), false, false, -1f);
                                 if (ATAPatchTC.IdleOverrides["skateboardAirTrick1cfg"])
                                 { VertAbilityPatches.overridingIdle = true; }
@@ -956,8 +1006,10 @@ namespace trickyclown
                                 { VertAbilityPatches.overridingIdle = false; }
                             }
                         }
-                        else
+                        else //2 NEUTRAL
                         {
+                            CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirTrick2cfgAnim"]);
+
                             __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir3), false, false, -1f);
                             if (ATAPatchTC.IdleOverrides["skateboardAirTrick1cfg"])
                             { VertAbilityPatches.overridingIdle = true; }
@@ -965,6 +1017,12 @@ namespace trickyclown
                             { VertAbilityPatches.overridingIdle = false; }
                         }
                     }
+                }
+
+                //MOVESTYLER FIXXXX
+                else if (VertAbilityPatches.nonVanillaMovestyle)
+                {
+                    __instance.p.PlayAnim(__instance.airTrickHashes[__instance.curTrick], true, false, 0f);
                 }
 
                 __instance.p.hitboxLeftLeg.SetActive(false);
@@ -1012,6 +1070,8 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0)
                 {
+                    CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirBoostTrick0cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["skateboardAirBoostTrick0cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
@@ -1020,6 +1080,8 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 1)
                 {
+                    CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirBoostTrick1cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir2), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["skateboardAirBoostTrick1cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
@@ -1028,6 +1090,8 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 2)
                 {
+                    CheckAnimOverride(ATAPatchTC.IdleOverrides["skateboardAirBoostTrick2cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir3), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["skateboardAirBoostTrick2cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
@@ -1039,6 +1103,8 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0)
                 {
+                    CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirBoostTrick0cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir4), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["inlineAirBoostTrick0cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
@@ -1047,6 +1113,8 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 1)
                 {
+                    CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirBoostTrick1cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir5), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["inlineAirBoostTrick1cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
@@ -1055,6 +1123,8 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 2)
                 {
+                    CheckAnimOverride(ATAPatchTC.IdleOverrides["inlineAirBoostTrick2cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir6), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["inlineAirBoostTrick2cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
@@ -1066,6 +1136,8 @@ namespace trickyclown
             {
                 if (__instance.curTrick == 0)
                 {
+                    CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirBoostTrick0cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir7), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["bmxAirBoostTrick0cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
@@ -1074,6 +1146,8 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 1)
                 {
+                    CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirBoostTrick1cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir8), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["bmxAirBoostTrick1cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
@@ -1082,6 +1156,8 @@ namespace trickyclown
                 }
                 else if (__instance.curTrick == 2)
                 {
+                    CheckAnimOverride(ATAPatchTC.IdleOverrides["bmxAirBoostTrick2cfgAnim"]);
+
                     __instance.p.PlayAnim(AnimationUtility.GetAnimationByName(configValueAir9), true, false, 0f);
                     if (ATAPatchTC.IdleOverrides["bmxAirBoostTrick2cfg"])
                     { VertAbilityPatches.overridingIdle = true; }
@@ -1228,6 +1304,12 @@ namespace trickyclown
                     }
                 }
 
+            }
+
+            //MOVESTYLER FIX
+            else if (VertAbilityPatches.nonVanillaMovestyle)
+            {
+                __instance.p.PlayAnim(__instance.airBoostTrickHashes[__instance.curTrick], true, false, 0f);
             }
 
             __instance.p.PlayVoice(AudioClipID.VoiceBoostTrick, VoicePriority.BOOST_TRICK, true);

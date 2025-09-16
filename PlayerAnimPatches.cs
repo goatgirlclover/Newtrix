@@ -29,6 +29,7 @@ namespace trickyclown
             string customsUnsplit = BPatchTC.customAnimationBlending.Value;
             if (string.IsNullOrWhiteSpace(customsUnsplit)) return;
 
+            int numberOfFailures = 0;
             string[] customs = customsUnsplit.Replace(", ", ",").Split(new char[]{','}, StringSplitOptions.RemoveEmptyEntries);
             foreach (string custom in customs)
             {
@@ -53,9 +54,13 @@ namespace trickyclown
                         ParseSelectorValuePair(selector, blendValueString, importantRule); 
                     }
                 } catch (Exception ex) {
-                    Debug.LogWarning($"(NewTrix/ABPatchesTC) Failed parsing custom animation blending string '{trimmedCustom}': {ex.Message}");
+                    Debug.LogWarning($"(NewTrix/AB) Failed parsing custom animation blending string '{trimmedCustom}': {ex.Message}");
+                    numberOfFailures++; 
                 }
             }
+
+            if (numberOfFailures == 0) { Debug.Log("(NewTrix/AB) All custom animation blending options successfully parsed!"); }
+            else { Debug.LogWarning($"(NewTrix/AB) All custom animation blending options parsed with {numberOfFailures} failures)"); }
         }
 
         public static void ParseSelectorValuePair(string selector, string blendValueString, bool importantRule = false) {

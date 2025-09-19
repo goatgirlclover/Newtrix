@@ -69,15 +69,14 @@ namespace trickyclown
 
             int slashIndex = blendValueString.LastIndexOf('/');
             if (slashIndex != -1) {
-                if (splitByArrows.Length == 2) { 
+                if (splitByArrows.Length == 2) { // TwoAnimationRules can only have a single blend value
                     throw new FormatException($"Blend time format '{blendValueString}' invalid for selector '{selector}' - check formatting");
                 }
                 
                 string blendValue1 = blendValueString.Substring(0, slashIndex);
                 string blendValue2 = blendValueString.Substring(slashIndex + 1);
                 if (float.TryParse(blendValue1, out float blend1) && float.TryParse(blendValue2, out float blend2)) {
-                    blend.Add(blend1); 
-                    blend.Add(blend2); 
+                    blend.Add(blend1); blend.Add(blend2); 
                 } else {
                     throw new FormatException($"Blend time '{blendValueString}' invalid - check formatting");
                 }
@@ -93,10 +92,10 @@ namespace trickyclown
                     HandleSingleAnimationRule(splitByArrows[0], blend.ToArray(), importantRule);
                     break;
                 case 2: // "animation1>animation2:blend"
-                    HandleTwoAnimationRule(splitByArrows[0], splitByArrows[1], blend.ToArray(), importantRule);
+                    HandleTwoAnimationRule(splitByArrows[0], splitByArrows[1], blend[0], importantRule);
                     break;
-                case 3: // "animation1>animation2>animation3:inOutBlend" OR "animation1>animation2>animation3:inBlend/outBlend" 
-                                                                        // (equivalent to "anim1>anim2:inBlend; anim2>anim3: outBlend;)
+                case 3: // "animation1>animation2>animation3:inOutBlend"      OR   "animation1>animation2>animation3:inBlend/outBlend" 
+                    //   ("anim1>anim2:inOutBlend; anim2>anim3:inOutBlend;)          ("anim1>anim2:inBlend; anim2>anim3: outBlend;)
                     HandleThreeAnimationRule(splitByArrows[0], splitByArrows[1], splitByArrows[2], blend.ToArray(), importantRule);
                     break;
                 default:
@@ -104,157 +103,51 @@ namespace trickyclown
             }
         }
 
-        private static void AlwaysBlendIn(int part, float blend) {
-            if (alwaysBlendIn.ContainsKey(part)) { 
-                bool currentRuleImportant = IsImportantRule("*", part.ToString(), alwaysBlendIn[part]); 
-                bool newRuleImportant = IsImportantRule("*", part.ToString(), blend); 
-                if ((currentRuleImportant && newRuleImportant) || !currentRuleImportant) { alwaysBlendIn[part] = blend; }
-            }
-            else { alwaysBlendIn[part] = blend; }
-        }
-
-        private static void AlwaysBlendOut(int part, float blend) {
-            if (alwaysBlendOut.ContainsKey(part)) { 
-                bool currentRuleImportant = IsImportantRule(part.ToString(), "*", alwaysBlendOut[part]); 
-                bool newRuleImportant = IsImportantRule(part.ToString(), "*", blend); 
-                if ((currentRuleImportant && newRuleImportant) || !currentRuleImportant) { alwaysBlendOut[part] = blend; }
-            }
-            else { alwaysBlendOut[part] = blend; }
-        }
-
-        private static string PartsToRule(string fromPart, string toPart, float blend) {
-            return $"{fromPart}>{toPart}:{blend.ToString()}"; 
-        }
-
-        private static bool IsImportantRule(string fromPart, string toPart, float blend) {
-            return IsImportantRule(PartsToRule(fromPart, toPart, blend)); 
-        }
-
-        private static bool IsImportantRule(string rule) {
-            return importantRules.Contains(rule); 
-        }
-
         private static void HandleSingleAnimationRule(string fromPart, float[] blend, bool importantRule) 
         {
+            int animation = AnimationUtility.GetAnimationByName(fromPart.Trim());
             if (blend.Count() == 1) { 
                 if (importantRule) { importantRules.Add(PartsToRule(fromPart, "*", blend[0])); }
-                HandleSingleAnimationRuleF(fromPart, blend[0]); 
-            }
-            else if (blend.Count() == 2) { 
+                AlwaysBlendOut(animation, blend[0]);
+            } else if (blend.Count() == 2) { 
                 if (importantRule) { 
                     importantRules.Add(PartsToRule("*", fromPart, blend[0]));
                     importantRules.Add(PartsToRule(fromPart, "*", blend[1])); 
                 }
-                HandleSingleAnimationRuleT(fromPart, blend[0]);
-                HandleSingleAnimationRuleF(fromPart, blend[1]); 
+                AlwaysBlendIn(animation, blend[0]);
+                AlwaysBlendOut(animation, blend[1]);
             } else { throw new ArgumentOutOfRangeException("Blend value count outside of range (1-2)"); }
         }
 
-        private static void HandleTwoAnimationRule(string fromPart, string toPart, float[] blend, bool importantRule) {
-            if (importantRule) { importantRules.Add(PartsToRule(fromPart, toPart, blend[0])); }
-            HandleTwoAnimationRule(fromPart, toPart, blend[0]); 
-        }
+        private static void HandleTwoAnimationRule(string fromPart, string toPart, float blend, bool importantRule) {
+            if (importantRule) { importantRules.Add(PartsToRule(fromPart, toPart, blend)); }
 
-        private static void HandleThreeAnimationRule(string startPart, string middlePart, string endPart, float[] blend, bool importantRule) {
-            if (blend.Count() == 1) { 
-                if (importantRule) {
-                    importantRules.Add(PartsToRule(startPart, middlePart, blend[0]));
-                    importantRules.Add(PartsToRule(middlePart, endPart, blend[0]));
-                }
-                HandleThreeAnimationRule(startPart, middlePart, endPart, blend[0]); 
-            }
-            else if (blend.Count() == 2) { 
-                if (importantRule) {
-                    importantRules.Add(PartsToRule(startPart, middlePart, blend[0]));
-                    importantRules.Add(PartsToRule(middlePart, endPart, blend[1]));
-                }
-                HandleTwoAnimationRule(startPart, middlePart, blend[0]);
-                HandleTwoAnimationRule(middlePart, endPart, blend[1]); 
-            } else { throw new ArgumentOutOfRangeException("Blend value count outside of range (1-2)"); }
-        }
-
-        private static void HandleSingleAnimationRuleF(string fromPart, float blend)
-        {
-            int animationFrom = AnimationUtility.GetAnimationByName(fromPart.Trim());
-            AlwaysBlendOut(animationFrom, blend);
-        }
-
-        private static void HandleSingleAnimationRuleT(string toPart, float blend) 
-        {
-            int animationTo = AnimationUtility.GetAnimationByName(toPart.Trim());
-            AlwaysBlendIn(animationTo, blend);
-        }
-
-        private static void HandleTwoAnimationRule(string fromPart, string toPart, float blend)
-        {
             string trimmedFrom = fromPart.Trim();
             string trimmedTo = toPart.Trim();
-
             bool alwaysOut = trimmedTo == "*";
             bool alwaysIn = trimmedFrom == "*";
 
-            if (alwaysOut && alwaysIn)
-            {
+            if (alwaysOut && alwaysIn) {
                 throw new Exception("Improper rule - use defaultAnimationBlend in config instead!");
-            }
-            else if (alwaysOut)
-            {
+            } else if (alwaysOut) {
                 int animationFrom = AnimationUtility.GetAnimationByName(trimmedFrom);
                 AlwaysBlendOut(animationFrom, blend);
-            }
-            else if (alwaysIn)
-            {
+            } else if (alwaysIn) {
                 int animationTo = AnimationUtility.GetAnimationByName(trimmedTo);
                 AlwaysBlendIn(animationTo, blend);
-            }
-            else
-            {
+            } else {
                 int animationFrom = AnimationUtility.GetAnimationByName(trimmedFrom);
                 int animationTo = AnimationUtility.GetAnimationByName(trimmedTo);
                 AddCustomBlending(animationFrom, animationTo, blend);
             }
         }
 
-        private static void HandleThreeAnimationRule(string fromPart, string middlePart, string toPart, float blend)
-        {
-            string trimmedStart = fromPart.Trim();
-            string trimmedMiddle = middlePart.Trim();
-            string trimmedEnd = toPart.Trim();
-
-            bool alwaysOut = trimmedStart == "*";
-            bool alwaysIn = trimmedEnd == "*";
-
-            if (trimmedMiddle == "*")
-                throw new Exception("Improper rule - use defaultAnimationBlend in config instead!");
-
-            if (alwaysOut && alwaysIn)
-            {
-                int animationMiddle = AnimationUtility.GetAnimationByName(trimmedMiddle);
-                AlwaysBlendIn(animationMiddle, blend);
-                AlwaysBlendOut(animationMiddle, blend);
-            }
-            else if (alwaysOut)
-            {
-                int animationFrom = AnimationUtility.GetAnimationByName(trimmedStart);
-                int animationMiddle = AnimationUtility.GetAnimationByName(trimmedMiddle);
-                AlwaysBlendOut(animationMiddle, blend);
-                AddCustomBlending(animationFrom, animationMiddle, blend);
-            }
-            else if (alwaysIn)
-            {
-                int animationMiddle = AnimationUtility.GetAnimationByName(trimmedMiddle);
-                int animationTo = AnimationUtility.GetAnimationByName(trimmedEnd);
-                AlwaysBlendIn(animationMiddle, blend);
-                AddCustomBlending(animationMiddle, animationTo, blend);
-            }
-            else
-            {
-                int animationFrom = AnimationUtility.GetAnimationByName(trimmedStart);
-                int animationMiddle = AnimationUtility.GetAnimationByName(trimmedMiddle);
-                int animationTo = AnimationUtility.GetAnimationByName(trimmedEnd);
-                AddCustomBlending(animationFrom, animationMiddle, blend);
-                AddCustomBlending(animationMiddle, animationTo, blend);
-            }
+        private static void HandleThreeAnimationRule(string startPart, string middlePart, string endPart, float[] blend, bool importantRule) {
+            if (blend.Count() > 2 || blend.Count() < 1) { throw new ArgumentOutOfRangeException("Blend value count outside of range (1-2)"); }
+            float blend1 = blend[0];
+            float blend2 = blend.Count() > 1 ? blend[1] : blend[0]; 
+            HandleTwoAnimationRule(startPart, middlePart, blend1, importantRule);
+            HandleTwoAnimationRule(middlePart, endPart, blend2, importantRule); 
         }
 
         private static void AddCustomBlending(int animationFrom, int animationTo, float blend) {
@@ -264,50 +157,97 @@ namespace trickyclown
             if (value.ContainsKey(animationTo)) { 
                string originalRule = PartsToRule(animationFrom.ToString(), animationTo.ToString(), value[animationTo]); 
                string newRule = PartsToRule(animationFrom.ToString(), animationTo.ToString(), blend); 
+               
                if (IsImportantRule(originalRule) && !IsImportantRule(newRule)) { return; }
+               else if (IsImportantRule(originalRule)) { importantRules.Remove(originalRule); }
             }
 
             value[animationTo] = blend;
-            customBlendingFromTo[animationFrom] = value;
             //Debug.Log($"{animationFrom} -->> {animationTo} equals {blend}");
         }
 
-        public static bool TryGetAnimationBlendValue(int animationFrom, int animationTo, out float blendReturnValue) 
+        private static void AlwaysBlendIn(int part, float blend) {
+            if (alwaysBlendIn.ContainsKey(part)) { 
+                string currentRule = PartsToRule("*", part.ToString(), alwaysBlendIn[part]);
+                bool currentRuleImportant = IsImportantRule(currentRule); 
+                bool newRuleImportant = IsImportantRule("*", part.ToString(), blend); 
+
+                if ((currentRuleImportant && newRuleImportant) || !currentRuleImportant) { 
+                    alwaysBlendIn[part] = blend; 
+                    if (currentRuleImportant) importantRules.Remove(currentRule);
+                }
+            } else { alwaysBlendIn[part] = blend; }
+        }
+
+        private static void AlwaysBlendOut(int part, float blend) {
+            if (alwaysBlendOut.ContainsKey(part)) { 
+                bool currentRuleImportant = IsImportantRule(part.ToString(), "*", alwaysBlendOut[part]); 
+                bool newRuleImportant = IsImportantRule(part.ToString(), "*", blend); 
+                if ((currentRuleImportant && newRuleImportant) || !currentRuleImportant) { 
+                    alwaysBlendOut[part] = blend; 
+                }
+            } else { alwaysBlendOut[part] = blend; }
+        }
+
+        public static bool TryGetAnimationBlendValue(int animationFrom, int animationTo, out float blendReturnValue)
         {
-            bool hasAlwaysOut = alwaysBlendOut.TryGetValue(animationFrom, out float blendValueOut);
-            bool hasAlwaysIn = alwaysBlendIn.TryGetValue(animationTo, out float blendValueIn);
-            string outRule = PartsToRule(animationFrom.ToString(), "*", blendValueOut); 
-            string inRule = PartsToRule("*", animationTo.ToString(), blendValueIn);
+            // hierarchy: important custom rule > important alwaysInOut > custom rule > alwaysInOut > fallbacks > 0f
 
-            if (hasAlwaysOut) {
-                if (!(hasAlwaysIn && IsImportantRule(inRule) && !IsImportantRule(outRule))) { 
-                    blendReturnValue = blendValueOut; 
-                    return true; 
+            bool hasCustomRule = customBlendingFromTo.TryGetValue(animationFrom, out Dictionary<int, float> customRules) 
+                && customRules.TryGetValue(animationTo, out float customBlendValue);
+            bool hasAlwaysOut = alwaysBlendOut.TryGetValue(animationFrom, out float alwaysOutValue);
+            bool hasAlwaysIn = alwaysBlendIn.TryGetValue(animationTo, out float alwaysInValue);
+
+            // 1. important custom rule
+            if (hasCustomRule)
+            {
+                string specificRule = PartsToRule(animationFrom, animationTo, customBlendValue);
+                if (IsImportantRule(specificRule) || !(hasAlwaysOut || hasAlwaysIn))
+                {
+                    blendReturnValue = customBlendValue;
+                    return true;
                 }
-            } 
+            }
 
-            if (hasAlwaysIn) {
-                if (!(hasAlwaysOut && IsImportantRule(outRule) && !IsImportantRule(inRule))) { 
-                    blendReturnValue = blendValueIn; 
-                    return true; 
-                }
-            } 
+            // 2. important alwaysIn/Out rules
+            string outRule = hasAlwaysOut ? PartsToRule(animationFrom.ToString(), "*", alwaysOutValue) : null;
+            string inRule = hasAlwaysIn ? PartsToRule("*", animationTo.ToString(), alwaysInValue) : null;
 
-            if (customBlendingFromTo.TryGetValue(animationFrom, out Dictionary<int, float> value)) 
-            { 
-                if (value.TryGetValue(animationTo, out float blendValue)) 
-                { 
-                    blendReturnValue = blendValue; 
-                    return true; 
-                }
-            } 
+            if (hasAlwaysOut && IsImportantRule(outRule))
+            {
+                blendReturnValue = alwaysOutValue;
+                return true;
+            } else if (hasAlwaysIn && IsImportantRule(inRule))
+            {
+                blendReturnValue = alwaysInValue;
+                return true;
+            }
 
-            bool fromIsBOEAnim = BunchOfEmotesSupport.Installed ? BunchOfEmotesSupport.GameAnimationIsCustomAnimation(animationFrom) : false;
-            bool toIsBOEAnim = BunchOfEmotesSupport.Installed ? BunchOfEmotesSupport.GameAnimationIsCustomAnimation(animationTo) : false;
+            // 3. unimportant rules
+            if (hasCustomRule) {
+                blendReturnValue = customBlendValue;
+                return true;
+            } else if (hasAlwaysOut) {
+                blendReturnValue = alwaysOutValue;
+                return true;
+            } else if (hasAlwaysIn) {
+                blendReturnValue = alwaysInValue;
+                return true;
+            }
 
-            if (fromIsBOEAnim) { blendReturnValue = BPatchTC.defaultAnimationBlendingOut.Value; }
-            else if (toIsBOEAnim) { blendReturnValue = BPatchTC.defaultAnimationBlendingIn.Value; }
-            else { blendReturnValue = 0f; }
+            // 4. fallbacks (defaultIn/Out)
+            bool fromIsBOEAnim = BunchOfEmotesSupport.Installed && BunchOfEmotesSupport.GameAnimationIsCustomAnimation(animationFrom);
+            bool toIsBOEAnim = BunchOfEmotesSupport.Installed && BunchOfEmotesSupport.GameAnimationIsCustomAnimation(animationTo);
+
+            if (fromIsBOEAnim) {
+                blendReturnValue = BPatchTC.defaultAnimationBlendingOut.Value;
+                return false;
+            } else if (toIsBOEAnim) {
+                blendReturnValue = BPatchTC.defaultAnimationBlendingIn.Value;
+                return false;
+            }
+
+            blendReturnValue = 0f;
             return false;
         }
 
@@ -335,6 +275,9 @@ namespace trickyclown
             //Debug.Log($"{__instance.curAnim} -->> {newAnim} equals {blendValue} (is fallback: {isFallbackBlendValue})");    
             return true;
         }
-    }
 
+        private static bool IsImportantRule(string f, string t, float b) { return IsImportantRule(PartsToRule(f,t,b)); }
+        private static string PartsToRule(string f, string t, float b) { return $"{f}>{t}:{b.ToString()}"; }
+        private static bool IsImportantRule(string rule) { return importantRules.Contains(rule); }
+    }
 }

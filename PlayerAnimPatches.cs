@@ -107,12 +107,12 @@ namespace trickyclown
         {
             int animation = AnimationUtility.GetAnimationByName(fromPart.Trim());
             if (blend.Count() == 1) { 
-                if (importantRule) { importantRules.Add(PartsToRule(fromPart, "*", blend[0])); }
+                if (importantRule) { importantRules.Add(PartsToRule(animation.ToString(), "*", blend[0])); }
                 AlwaysBlendOut(animation, blend[0]);
             } else if (blend.Count() == 2) { 
                 if (importantRule) { 
-                    importantRules.Add(PartsToRule("*", fromPart, blend[0]));
-                    importantRules.Add(PartsToRule(fromPart, "*", blend[1])); 
+                    importantRules.Add(PartsToRule("*", animation.ToString(), blend[0]));
+                    importantRules.Add(PartsToRule(animation.ToString(), "*", blend[1])); 
                 }
                 AlwaysBlendIn(animation, blend[0]);
                 AlwaysBlendOut(animation, blend[1]);
@@ -120,25 +120,27 @@ namespace trickyclown
         }
 
         private static void HandleTwoAnimationRule(string fromPart, string toPart, float blend, bool importantRule) {
-            if (importantRule) { importantRules.Add(PartsToRule(fromPart, toPart, blend)); }
-
             string trimmedFrom = fromPart.Trim();
             string trimmedTo = toPart.Trim();
             bool alwaysOut = trimmedTo == "*";
             bool alwaysIn = trimmedFrom == "*";
 
+            if (importantRule) { 
+                importantRules.Add(PartsToRule(
+                    (string)(alwaysIn ? "*" : AnimationUtility.GetAnimationByName(trimmedFrom).ToString()), 
+                    (string)(alwaysOut ? "*" : AnimationUtility.GetAnimationByName(trimmedTo).ToString()), 
+                    blend
+                )); 
+            }
+
             if (alwaysOut && alwaysIn) {
                 throw new Exception("Improper rule - use defaultAnimationBlend in config instead!");
             } else if (alwaysOut) {
-                int animationFrom = AnimationUtility.GetAnimationByName(trimmedFrom);
-                AlwaysBlendOut(animationFrom, blend);
+                AlwaysBlendOut(AnimationUtility.GetAnimationByName(trimmedFrom), blend);
             } else if (alwaysIn) {
-                int animationTo = AnimationUtility.GetAnimationByName(trimmedTo);
-                AlwaysBlendIn(animationTo, blend);
+                AlwaysBlendIn(AnimationUtility.GetAnimationByName(trimmedTo), blend);
             } else {
-                int animationFrom = AnimationUtility.GetAnimationByName(trimmedFrom);
-                int animationTo = AnimationUtility.GetAnimationByName(trimmedTo);
-                AddCustomBlending(animationFrom, animationTo, blend);
+                AddCustomBlending(AnimationUtility.GetAnimationByName(trimmedFrom), AnimationUtility.GetAnimationByName(trimmedTo), blend);
             }
         }
 
@@ -201,7 +203,7 @@ namespace trickyclown
             // 1. important custom rule
             if (hasCustomRule)
             {
-                string specificRule = PartsToRule(animationFrom, animationTo, customBlendValue);
+                string specificRule = PartsToRule(animationFrom.ToString(), animationTo.ToString(), customBlendValue);
                 if (IsImportantRule(specificRule) || !(hasAlwaysOut || hasAlwaysIn))
                 {
                     blendReturnValue = customBlendValue;

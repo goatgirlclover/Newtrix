@@ -195,8 +195,10 @@ namespace trickyclown
         {
             // hierarchy: important custom rule > important alwaysInOut > custom rule > alwaysInOut > fallbacks > 0f
 
-            bool hasCustomRule = customBlendingFromTo.TryGetValue(animationFrom, out Dictionary<int, float> customRules) 
-                && customRules.TryGetValue(animationTo, out float customBlendValue);
+            float customBlendValue = 0;
+            bool hasCustomRule = customBlendingFromTo.TryGetValue(animationFrom, out Dictionary<int, float> customRules);
+            if (hasCustomRule) { hasCustomRule = customRules.TryGetValue(animationTo, out customBlendValue); }
+
             bool hasAlwaysOut = alwaysBlendOut.TryGetValue(animationFrom, out float alwaysOutValue);
             bool hasAlwaysIn = alwaysBlendIn.TryGetValue(animationTo, out float alwaysInValue);
 

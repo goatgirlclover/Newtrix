@@ -14,6 +14,7 @@ namespace trickyclown
 {
     public class ABPatchesTC
     {
+        public static bool ParsedOptions { get; private set; } = false;
         public static Dictionary<int, Dictionary<int, float>> customBlendingFromTo = new();
         public static Dictionary<int, float> alwaysBlendOut = new(); 
         public static Dictionary<int, float> alwaysBlendIn = new();
@@ -61,6 +62,7 @@ namespace trickyclown
 
             if (numberOfFailures == 0) { Debug.Log("(NewTrix/AB) All custom animation blending options successfully parsed!"); }
             else { Debug.LogWarning($"(NewTrix/AB) All custom animation blending options parsed with {numberOfFailures} failures)"); }
+            ParsedOptions = true;
         }
 
         public static void ParseSelectorValuePair(string selector, string blendValueString, bool importantRule = false) {
@@ -253,6 +255,12 @@ namespace trickyclown
 
             blendReturnValue = 0f;
             return false;
+        }
+
+        [HarmonyPostfix]
+        [HarmonyPatch(typeof(StageManager), nameof(StageManager.DoStagePostInitialization))]
+        public static void CheckToParse() {
+            if (!ParsedOptions) ParseCustomBlending();
         }
 
         [HarmonyPrefix]

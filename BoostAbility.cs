@@ -278,11 +278,11 @@ namespace trickyclown
             BPatchTC.enableFramerideCfg = base.Config.Bind<bool>("General", "enableFramerideCfg", false, "Enables frameride trick name/score (Leave this false if you're doing vanilla score attack or your run will be considered invalid.)");
             BPatchTC.enableFramerideSoundCfg = base.Config.Bind<bool>("General", "enableFramerideSoundCfg", false, "Enables frameride sound.");
 
-            BPatchTC.enableAnimationBlending = base.Config.Bind<bool>("General", "enableAnimationBlending", false, "Enables smooth animation blending between animations. May cause strange/broken movement with certain animations.");
+            BPatchTC.enableAnimationBlending = base.Config.Bind<bool>("General", "enableAnimationBlending", true, "Enables smooth animation blending between animations. May cause strange/broken movement with certain animations.");
             BPatchTC.defaultAnimationBlendingIn = base.Config.Bind<float>("General", "defaultAnimationBlendingIn", 0f, "Default blend time transitioning into BOE animations (in seconds). When transitioning from one BOE animation to another, defaultAnimationBlendingOut takes priority");
-            BPatchTC.defaultAnimationBlendingOut = base.Config.Bind<float>("General", "defaultAnimationBlendingOut", 0.2f, "Default blend time transitioning out of BOE animations (in seconds)");
+            BPatchTC.defaultAnimationBlendingOut = base.Config.Bind<float>("General", "defaultAnimationBlendingOut", 0.1f, "Default blend time transitioning out of BOE animations (in seconds)");
             
-            BPatchTC.customAnimationBlending = base.Config.Bind<string>("General", "customAnimationBlending", "", "Overrides defaults. Use asterisk (*) as a wildcard for any animations (vanilla or BOE). Separate rules with commas. Acceptable formats: animationIn>animationOut:blendTime, animation:outBlendTime, animation1>animation2>animation3:inOutBlendTime,"); 
+            BPatchTC.customAnimationBlending = base.Config.Bind<string>("General", "customAnimationBlending", "", "Overrides default blend time for specified animations. Use asterisk (*) as a wildcard for any animations (vanilla or BOE). Separate rules with commas. Acceptable formats: animation:inBlend/outBlend, animation:outBlend, animationIn>animationOut:blend, animation1>animation2>animation3:blend, animation1>animation2>animation3:inBlend/outBlend"); 
             BPatchTC.customAnimationBlending.SettingChanged += (a,b) => { ABPatchesTC.ParseCustomBlending(); };
 
             Instance = this;
